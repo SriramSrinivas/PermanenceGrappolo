@@ -1,0 +1,61 @@
+/home/sriramsrinivas@unomaha.edu/Downloads/clion-2019.3.2/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo
+-- The C compiler identification is GNU 7.5.0
+-- The CXX compiler identification is GNU 7.5.0
+-- Check for working C compiler: /usr/bin/cc
+-- Check for working C compiler: /usr/bin/cc -- works
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Check for working CXX compiler: /usr/bin/c++
+-- Check for working CXX compiler: /usr/bin/c++ -- works
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+GPU code enabled with CUDA
+-- Looking for pthread.h
+-- Looking for pthread.h - found
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Failed
+-- Looking for pthread_create in pthreads
+-- Looking for pthread_create in pthreads - not found
+-- Looking for pthread_create in pthread
+-- Looking for pthread_create in pthread - found
+-- Found Threads: TRUE  
+-- Found CUDA: /usr (found version "9.1") 
+-- Found OpenMP_C: -fopenmp (found version "4.5") 
+-- Found OpenMP_CXX: -fopenmp (found version "4.5") 
+-- Found OpenMP: TRUE (found version "4.5")  
+Use GPU code in gpu_graph directory
+-- Configuring done
+CMake Warning (dev) at /home/sriramsrinivas@unomaha.edu/Downloads/clion-2019.3.2/bin/cmake/linux/share/cmake-3.15/Modules/FindCUDA.cmake:1863 (add_executable):
+  Policy CMP0003 should be set before this line.  Add code such as
+
+    if(COMMAND cmake_policy)
+      cmake_policy(SET CMP0003 NEW)
+    endif(COMMAND cmake_policy)
+
+  as early as possible but after the most recent call to
+  cmake_minimum_required or cmake_policy(VERSION).  This warning appears
+  because target "gpu_graph" links to some libraries for which the linker
+  must search:
+
+    -lpthread, dl, -lpthread, dl
+
+  and other libraries with known full path:
+
+    /home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/InputsOutput/libinout.a
+    /home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/Utility/libutil.a
+
+  CMake is adding directories in the second list to the linker search path in
+  case they are needed to find libraries from the first list (for backwards
+  compatibility with CMake 2.4).  Set policy CMP0003 to OLD or NEW to enable
+  or disable this behavior explicitly.  Run "cmake --help-policy CMP0003" for
+  more information.
+Call Stack (most recent call first):
+  gpu_graph/CMakeLists.txt:30 (CUDA_ADD_EXECUTABLE)
+This warning is for project developers.  Use -Wno-dev to suppress it.
+
+-- Generating done
+-- Build files have been written to: /home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug

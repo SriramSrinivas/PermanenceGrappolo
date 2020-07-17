@@ -1,0 +1,252 @@
+[
+{
+  "directory": "/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug",
+  "command": "/usr/bin/c++  -DRUNONGPU=1 -I/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/DefineStructure   -g -std=c++11 -fopenmp -O0 -fopenmp -g   -std=gnu++11 -o CMakeFiles/driverForMatrixReorderingRcm.dir/driverForMatrixReorderingRcm.cpp.o -c /home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/driverForMatrixReorderingRcm.cpp",
+  "file": "/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/driverForMatrixReorderingRcm.cpp"
+},
+{
+  "directory": "/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug",
+  "command": "/usr/bin/c++  -DRUNONGPU=1 -I/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/DefineStructure   -g -std=c++11 -fopenmp -O0 -fopenmp -g   -std=gnu++11 -o CMakeFiles/driverForClusterComparison.dir/driverForClusterComparison.cpp.o -c /home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/driverForClusterComparison.cpp",
+  "file": "/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/driverForClusterComparison.cpp"
+},
+{
+  "directory": "/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug",
+  "command": "/usr/bin/c++  -DRUNONGPU=1 -I/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/DefineStructure   -g -std=c++11 -fopenmp -O0 -fopenmp -g   -std=gnu++11 -o CMakeFiles/driverForGraphClustering.dir/driverForGraphClustering.cpp.o -c /home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/driverForGraphClustering.cpp",
+  "file": "/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/driverForGraphClustering.cpp"
+},
+{
+  "directory": "/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug",
+  "command": "/usr/bin/c++  -DRUNONGPU=1 -I/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/DefineStructure   -g -std=c++11 -fopenmp -O0 -fopenmp -g   -std=gnu++11 -o CMakeFiles/driverForMatrixReordering.dir/driverForMatrixReordering.cpp.o -c /home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/driverForMatrixReordering.cpp",
+  "file": "/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/driverForMatrixReordering.cpp"
+},
+{
+  "directory": "/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/gpu_graph",
+  "command": "/usr/bin/c++  -DRUNONGPU=1 -I/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/gpu_graph -I/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/DefineStructure   -g -std=c++11 -fopenmp -O0 -fopenmp -g   -std=gnu++11 -o CMakeFiles/gpu_graph.dir/gpu_main.cpp.o -c /home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/gpu_graph/gpu_main.cpp",
+  "file": "/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/gpu_graph/gpu_main.cpp"
+},
+{
+  "directory": "/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/gpu_graph",
+  "command": "/usr/bin/c++  -DRUNONGPU=1 -I/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/gpu_graph -I/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/DefineStructure   -g -std=c++11 -fopenmp -O0 -fopenmp -g   -std=gnu++11 -o CMakeFiles/gpu_graph.dir/graphHOST.cpp.o -c /home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/gpu_graph/graphHOST.cpp",
+  "file": "/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/gpu_graph/graphHOST.cpp"
+},
+{
+  "directory": "/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/InputsOutput",
+  "command": "/usr/bin/c++  -DRUNONGPU=1 -I/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/DefineStructure   -g -std=c++11 -fopenmp -O0 -fopenmp -g   -std=gnu++11 -o CMakeFiles/inout.dir/loadBinary.cpp.o -c /home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/InputsOutput/loadBinary.cpp",
+  "file": "/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/InputsOutput/loadBinary.cpp"
+},
+{
+  "directory": "/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/InputsOutput",
+  "command": "/usr/bin/c++  -DRUNONGPU=1 -I/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/DefineStructure   -g -std=c++11 -fopenmp -O0 -fopenmp -g   -std=gnu++11 -o CMakeFiles/inout.dir/loadDimacs.cpp.o -c /home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/InputsOutput/loadDimacs.cpp",
+  "file": "/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/InputsOutput/loadDimacs.cpp"
+},
+{
+  "directory": "/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/InputsOutput",
+  "command": "/usr/bin/c++  -DRUNONGPU=1 -I/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/DefineStructure   -g -std=c++11 -fopenmp -O0 -fopenmp -g   -std=gnu++11 -o CMakeFiles/inout.dir/loadEdgeList.cpp.o -c /home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/InputsOutput/loadEdgeList.cpp",
+  "file": "/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/InputsOutput/loadEdgeList.cpp"
+},
+{
+  "directory": "/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/InputsOutput",
+  "command": "/usr/bin/c++  -DRUNONGPU=1 -I/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/DefineStructure   -g -std=c++11 -fopenmp -O0 -fopenmp -g   -std=gnu++11 -o CMakeFiles/inout.dir/loadMatrixMarket.cpp.o -c /home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/InputsOutput/loadMatrixMarket.cpp",
+  "file": "/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/InputsOutput/loadMatrixMarket.cpp"
+},
+{
+  "directory": "/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/InputsOutput",
+  "command": "/usr/bin/c++  -DRUNONGPU=1 -I/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/DefineStructure   -g -std=c++11 -fopenmp -O0 -fopenmp -g   -std=gnu++11 -o CMakeFiles/inout.dir/loadMetis.cpp.o -c /home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/InputsOutput/loadMetis.cpp",
+  "file": "/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/InputsOutput/loadMetis.cpp"
+},
+{
+  "directory": "/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/InputsOutput",
+  "command": "/usr/bin/c++  -DRUNONGPU=1 -I/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/DefineStructure   -g -std=c++11 -fopenmp -O0 -fopenmp -g   -std=gnu++11 -o CMakeFiles/inout.dir/loadPajekFormat.cpp.o -c /home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/InputsOutput/loadPajekFormat.cpp",
+  "file": "/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/InputsOutput/loadPajekFormat.cpp"
+},
+{
+  "directory": "/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/InputsOutput",
+  "command": "/usr/bin/c++  -DRUNONGPU=1 -I/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/DefineStructure   -g -std=c++11 -fopenmp -O0 -fopenmp -g   -std=gnu++11 -o CMakeFiles/inout.dir/loadSNAP.cpp.o -c /home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/InputsOutput/loadSNAP.cpp",
+  "file": "/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/InputsOutput/loadSNAP.cpp"
+},
+{
+  "directory": "/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/InputsOutput",
+  "command": "/usr/bin/c++  -DRUNONGPU=1 -I/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/DefineStructure   -g -std=c++11 -fopenmp -O0 -fopenmp -g   -std=gnu++11 -o CMakeFiles/inout.dir/parseInputParameters.cpp.o -c /home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/InputsOutput/parseInputParameters.cpp",
+  "file": "/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/InputsOutput/parseInputParameters.cpp"
+},
+{
+  "directory": "/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/InputsOutput",
+  "command": "/usr/bin/c++  -DRUNONGPU=1 -I/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/DefineStructure   -g -std=c++11 -fopenmp -O0 -fopenmp -g   -std=gnu++11 -o CMakeFiles/inout.dir/writeBinary.cpp.o -c /home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/InputsOutput/writeBinary.cpp",
+  "file": "/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/InputsOutput/writeBinary.cpp"
+},
+{
+  "directory": "/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/InputsOutput",
+  "command": "/usr/bin/c++  -DRUNONGPU=1 -I/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/DefineStructure   -g -std=c++11 -fopenmp -O0 -fopenmp -g   -std=gnu++11 -o CMakeFiles/inout.dir/writeMatrixMarket.cpp.o -c /home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/InputsOutput/writeMatrixMarket.cpp",
+  "file": "/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/InputsOutput/writeMatrixMarket.cpp"
+},
+{
+  "directory": "/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/InputsOutput",
+  "command": "/usr/bin/c++  -DRUNONGPU=1 -I/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/DefineStructure   -g -std=c++11 -fopenmp -O0 -fopenmp -g   -std=gnu++11 -o CMakeFiles/inout.dir/writeSimple.cpp.o -c /home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/InputsOutput/writeSimple.cpp",
+  "file": "/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/InputsOutput/writeSimple.cpp"
+},
+{
+  "directory": "/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/BasicCommunitiesDetection",
+  "command": "/usr/bin/c++  -DRUNONGPU=1 -I/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/DefineStructure   -g -std=c++11 -fopenmp -O0 -fopenmp -g   -std=gnu++11 -o CMakeFiles/basic_cd.dir/parallelLouvainMethodApprox-2.cpp.o -c /home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/BasicCommunitiesDetection/parallelLouvainMethodApprox-2.cpp",
+  "file": "/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/BasicCommunitiesDetection/parallelLouvainMethodApprox-2.cpp"
+},
+{
+  "directory": "/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/BasicCommunitiesDetection",
+  "command": "/usr/bin/c++  -DRUNONGPU=1 -I/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/DefineStructure   -g -std=c++11 -fopenmp -O0 -fopenmp -g   -std=gnu++11 -o CMakeFiles/basic_cd.dir/parallelLouvainMethodApprox.cpp.o -c /home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/BasicCommunitiesDetection/parallelLouvainMethodApprox.cpp",
+  "file": "/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/BasicCommunitiesDetection/parallelLouvainMethodApprox.cpp"
+},
+{
+  "directory": "/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/BasicCommunitiesDetection",
+  "command": "/usr/bin/c++  -DRUNONGPU=1 -I/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/DefineStructure   -g -std=c++11 -fopenmp -O0 -fopenmp -g   -std=gnu++11 -o CMakeFiles/basic_cd.dir/parallelLouvainMethod.cpp.o -c /home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/BasicCommunitiesDetection/parallelLouvainMethod.cpp",
+  "file": "/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/BasicCommunitiesDetection/parallelLouvainMethod.cpp"
+},
+{
+  "directory": "/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/BasicCommunitiesDetection",
+  "command": "/usr/bin/c++  -DRUNONGPU=1 -I/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/DefineStructure   -g -std=c++11 -fopenmp -O0 -fopenmp -g   -std=gnu++11 -o CMakeFiles/basic_cd.dir/parallelLouvainMethodFastTrackResistance.cpp.o -c /home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/BasicCommunitiesDetection/parallelLouvainMethodFastTrackResistance.cpp",
+  "file": "/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/BasicCommunitiesDetection/parallelLouvainMethodFastTrackResistance.cpp"
+},
+{
+  "directory": "/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/BasicCommunitiesDetection",
+  "command": "/usr/bin/c++  -DRUNONGPU=1 -I/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/DefineStructure   -g -std=c++11 -fopenmp -O0 -fopenmp -g   -std=gnu++11 -o CMakeFiles/basic_cd.dir/parallelLouvainMethodNoMap.cpp.o -c /home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/BasicCommunitiesDetection/parallelLouvainMethodNoMap.cpp",
+  "file": "/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/BasicCommunitiesDetection/parallelLouvainMethodNoMap.cpp"
+},
+{
+  "directory": "/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/BasicCommunitiesDetection",
+  "command": "/usr/bin/c++  -DRUNONGPU=1 -I/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/DefineStructure   -g -std=c++11 -fopenmp -O0 -fopenmp -g   -std=gnu++11 -o CMakeFiles/basic_cd.dir/parallelLouvainMethodNoMapFastTrackResistance.cpp.o -c /home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/BasicCommunitiesDetection/parallelLouvainMethodNoMapFastTrackResistance.cpp",
+  "file": "/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/BasicCommunitiesDetection/parallelLouvainMethodNoMapFastTrackResistance.cpp"
+},
+{
+  "directory": "/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/BasicCommunitiesDetection",
+  "command": "/usr/bin/c++  -DRUNONGPU=1 -I/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/DefineStructure   -g -std=c++11 -fopenmp -O0 -fopenmp -g   -std=gnu++11 -o CMakeFiles/basic_cd.dir/parallelLouvainMethodScale.cpp.o -c /home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/BasicCommunitiesDetection/parallelLouvainMethodScale.cpp",
+  "file": "/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/BasicCommunitiesDetection/parallelLouvainMethodScale.cpp"
+},
+{
+  "directory": "/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/BasicCommunitiesDetection",
+  "command": "/usr/bin/c++  -DRUNONGPU=1 -I/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/DefineStructure   -g -std=c++11 -fopenmp -O0 -fopenmp -g   -std=gnu++11 -o CMakeFiles/basic_cd.dir/parallelLouvainMethodScaleFastTrackResistance.cpp.o -c /home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/BasicCommunitiesDetection/parallelLouvainMethodScaleFastTrackResistance.cpp",
+  "file": "/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/BasicCommunitiesDetection/parallelLouvainMethodScaleFastTrackResistance.cpp"
+},
+{
+  "directory": "/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/BasicCommunitiesDetection",
+  "command": "/usr/bin/c++  -DRUNONGPU=1 -I/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/DefineStructure   -g -std=c++11 -fopenmp -O0 -fopenmp -g   -std=gnu++11 -o CMakeFiles/basic_cd.dir/runMultiPhaseBasicApprox.cpp.o -c /home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/BasicCommunitiesDetection/runMultiPhaseBasicApprox.cpp",
+  "file": "/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/BasicCommunitiesDetection/runMultiPhaseBasicApprox.cpp"
+},
+{
+  "directory": "/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/BasicCommunitiesDetection",
+  "command": "/usr/bin/c++  -DRUNONGPU=1 -I/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/DefineStructure   -g -std=c++11 -fopenmp -O0 -fopenmp -g   -std=gnu++11 -o CMakeFiles/basic_cd.dir/runMultiPhaseBasic.cpp.o -c /home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/BasicCommunitiesDetection/runMultiPhaseBasic.cpp",
+  "file": "/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/BasicCommunitiesDetection/runMultiPhaseBasic.cpp"
+},
+{
+  "directory": "/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/BasicCommunitiesDetection",
+  "command": "/usr/bin/c++  -DRUNONGPU=1 -I/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/DefineStructure   -g -std=c++11 -fopenmp -O0 -fopenmp -g   -std=gnu++11 -o CMakeFiles/basic_cd.dir/runMultiPhaseBasicFastTrackResistance.cpp.o -c /home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/BasicCommunitiesDetection/runMultiPhaseBasicFastTrackResistance.cpp",
+  "file": "/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/BasicCommunitiesDetection/runMultiPhaseBasicFastTrackResistance.cpp"
+},
+{
+  "directory": "/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/Utility",
+  "command": "/usr/bin/c++  -DRUNONGPU=1 -I/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/DefineStructure   -g -std=c++11 -fopenmp -O0 -fopenmp -g   -std=gnu++11 -o CMakeFiles/util.dir/buildNextPhase.cpp.o -c /home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/Utility/buildNextPhase.cpp",
+  "file": "/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/Utility/buildNextPhase.cpp"
+},
+{
+  "directory": "/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/Utility",
+  "command": "/usr/bin/c++  -DRUNONGPU=1 -I/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/DefineStructure   -g -std=c++11 -fopenmp -O0 -fopenmp -g   -std=gnu++11 -o CMakeFiles/util.dir/reverseCuthillMcKee.cpp.o -c /home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/Utility/reverseCuthillMcKee.cpp",
+  "file": "/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/Utility/reverseCuthillMcKee.cpp"
+},
+{
+  "directory": "/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/Utility",
+  "command": "/usr/bin/c++  -DRUNONGPU=1 -I/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/DefineStructure   -g -std=c++11 -fopenmp -O0 -fopenmp -g   -std=gnu++11 -o CMakeFiles/util.dir/RngStream.cpp.o -c /home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/Utility/RngStream.cpp",
+  "file": "/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/Utility/RngStream.cpp"
+},
+{
+  "directory": "/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/Utility",
+  "command": "/usr/bin/c++  -DRUNONGPU=1 -I/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/DefineStructure   -g -std=c++11 -fopenmp -O0 -fopenmp -g   -std=gnu++11 -o CMakeFiles/util.dir/utilityClusterComparisonMetrics.cpp.o -c /home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/Utility/utilityClusterComparisonMetrics.cpp",
+  "file": "/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/Utility/utilityClusterComparisonMetrics.cpp"
+},
+{
+  "directory": "/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/Utility",
+  "command": "/usr/bin/c++  -DRUNONGPU=1 -I/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/DefineStructure   -g -std=c++11 -fopenmp -O0 -fopenmp -g   -std=gnu++11 -o CMakeFiles/util.dir/utilityClusteringFunctions.cpp.o -c /home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/Utility/utilityClusteringFunctions.cpp",
+  "file": "/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/Utility/utilityClusteringFunctions.cpp"
+},
+{
+  "directory": "/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/Utility",
+  "command": "/usr/bin/c++  -DRUNONGPU=1 -I/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/DefineStructure   -g -std=c++11 -fopenmp -O0 -fopenmp -g   -std=gnu++11 -o CMakeFiles/util.dir/utilityDataStructures.cpp.o -c /home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/Utility/utilityDataStructures.cpp",
+  "file": "/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/Utility/utilityDataStructures.cpp"
+},
+{
+  "directory": "/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/Utility",
+  "command": "/usr/bin/c++  -DRUNONGPU=1 -I/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/DefineStructure   -g -std=c++11 -fopenmp -O0 -fopenmp -g   -std=gnu++11 -o CMakeFiles/util.dir/utilityFunctions.cpp.o -c /home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/Utility/utilityFunctions.cpp",
+  "file": "/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/Utility/utilityFunctions.cpp"
+},
+{
+  "directory": "/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/Utility",
+  "command": "/usr/bin/c++  -DRUNONGPU=1 -I/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/DefineStructure   -g -std=c++11 -fopenmp -O0 -fopenmp -g   -std=gnu++11 -o CMakeFiles/util.dir/utilitySparsificationFunctions.cpp.o -c /home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/Utility/utilitySparsificationFunctions.cpp",
+  "file": "/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/Utility/utilitySparsificationFunctions.cpp"
+},
+{
+  "directory": "/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/Utility",
+  "command": "/usr/bin/c++  -DRUNONGPU=1 -I/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/DefineStructure   -g -std=c++11 -fopenmp -O0 -fopenmp -g   -std=gnu++11 -o CMakeFiles/util.dir/vertexFollowing.cpp.o -c /home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/Utility/vertexFollowing.cpp",
+  "file": "/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/Utility/vertexFollowing.cpp"
+},
+{
+  "directory": "/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/Coloring",
+  "command": "/usr/bin/c++  -DRUNONGPU=1 -I/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/DefineStructure   -g -std=c++11 -fopenmp -O0 -fopenmp -g   -std=gnu++11 -o CMakeFiles/coloring.dir/coloringDistanceOne.cpp.o -c /home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/Coloring/coloringDistanceOne.cpp",
+  "file": "/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/Coloring/coloringDistanceOne.cpp"
+},
+{
+  "directory": "/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/Coloring",
+  "command": "/usr/bin/c++  -DRUNONGPU=1 -I/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/DefineStructure   -g -std=c++11 -fopenmp -O0 -fopenmp -g   -std=gnu++11 -o CMakeFiles/coloring.dir/coloringMultiHashMaxMin.cpp.o -c /home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/Coloring/coloringMultiHashMaxMin.cpp",
+  "file": "/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/Coloring/coloringMultiHashMaxMin.cpp"
+},
+{
+  "directory": "/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/Coloring",
+  "command": "/usr/bin/c++  -DRUNONGPU=1 -I/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/DefineStructure   -g -std=c++11 -fopenmp -O0 -fopenmp -g   -std=gnu++11 -o CMakeFiles/coloring.dir/coloringUtils.cpp.o -c /home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/Coloring/coloringUtils.cpp",
+  "file": "/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/Coloring/coloringUtils.cpp"
+},
+{
+  "directory": "/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/Coloring",
+  "command": "/usr/bin/c++  -DRUNONGPU=1 -I/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/DefineStructure   -g -std=c++11 -fopenmp -O0 -fopenmp -g   -std=gnu++11 -o CMakeFiles/coloring.dir/equitableColoringDistanceOne.cpp.o -c /home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/Coloring/equitableColoringDistanceOne.cpp",
+  "file": "/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/Coloring/equitableColoringDistanceOne.cpp"
+},
+{
+  "directory": "/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/Coloring",
+  "command": "/usr/bin/c++  -DRUNONGPU=1 -I/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/DefineStructure   -g -std=c++11 -fopenmp -O0 -fopenmp -g   -std=gnu++11 -o CMakeFiles/coloring.dir/parallelLouvainWithColoring.cpp.o -c /home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/Coloring/parallelLouvainWithColoring.cpp",
+  "file": "/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/Coloring/parallelLouvainWithColoring.cpp"
+},
+{
+  "directory": "/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/Coloring",
+  "command": "/usr/bin/c++  -DRUNONGPU=1 -I/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/DefineStructure   -g -std=c++11 -fopenmp -O0 -fopenmp -g   -std=gnu++11 -o CMakeFiles/coloring.dir/parallelLouvainWithColoringNoMap.cpp.o -c /home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/Coloring/parallelLouvainWithColoringNoMap.cpp",
+  "file": "/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/Coloring/parallelLouvainWithColoringNoMap.cpp"
+},
+{
+  "directory": "/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/Coloring",
+  "command": "/usr/bin/c++  -DRUNONGPU=1 -I/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/DefineStructure   -g -std=c++11 -fopenmp -O0 -fopenmp -g   -std=gnu++11 -o CMakeFiles/coloring.dir/runMultiPhaseColoring.cpp.o -c /home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/Coloring/runMultiPhaseColoring.cpp",
+  "file": "/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/Coloring/runMultiPhaseColoring.cpp"
+},
+{
+  "directory": "/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/Coloring",
+  "command": "/usr/bin/c++  -DRUNONGPU=1 -I/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/DefineStructure   -g -std=c++11 -fopenmp -O0 -fopenmp -g   -std=gnu++11 -o CMakeFiles/coloring.dir/vBase.cpp.o -c /home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/Coloring/vBase.cpp",
+  "file": "/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/Coloring/vBase.cpp"
+},
+{
+  "directory": "/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/FullSyncOptimization",
+  "command": "/usr/bin/c++  -DRUNONGPU=1 -I/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/DefineStructure   -g -std=c++11 -fopenmp -O0 -fopenmp -g   -std=gnu++11 -o CMakeFiles/full_syn_opt.dir/fullSyncUtility.cpp.o -c /home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/FullSyncOptimization/fullSyncUtility.cpp",
+  "file": "/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/FullSyncOptimization/fullSyncUtility.cpp"
+},
+{
+  "directory": "/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/FullSyncOptimization",
+  "command": "/usr/bin/c++  -DRUNONGPU=1 -I/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/DefineStructure   -g -std=c++11 -fopenmp -O0 -fopenmp -g   -std=gnu++11 -o CMakeFiles/full_syn_opt.dir/parallelLouvainMethodEarlyTerminate.cpp.o -c /home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/FullSyncOptimization/parallelLouvainMethodEarlyTerminate.cpp",
+  "file": "/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/FullSyncOptimization/parallelLouvainMethodEarlyTerminate.cpp"
+},
+{
+  "directory": "/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/FullSyncOptimization",
+  "command": "/usr/bin/c++  -DRUNONGPU=1 -I/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/DefineStructure   -g -std=c++11 -fopenmp -O0 -fopenmp -g   -std=gnu++11 -o CMakeFiles/full_syn_opt.dir/parallelLouvainMethodFullSync.cpp.o -c /home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/FullSyncOptimization/parallelLouvainMethodFullSync.cpp",
+  "file": "/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/FullSyncOptimization/parallelLouvainMethodFullSync.cpp"
+},
+{
+  "directory": "/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/FullSyncOptimization",
+  "command": "/usr/bin/c++  -DRUNONGPU=1 -I/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/DefineStructure   -g -std=c++11 -fopenmp -O0 -fopenmp -g   -std=gnu++11 -o CMakeFiles/full_syn_opt.dir/parallelLouvainMethodFullSyncEarly.cpp.o -c /home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/FullSyncOptimization/parallelLouvainMethodFullSyncEarly.cpp",
+  "file": "/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/FullSyncOptimization/parallelLouvainMethodFullSyncEarly.cpp"
+},
+{
+  "directory": "/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/FullSyncOptimization",
+  "command": "/usr/bin/c++  -DRUNONGPU=1 -I/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/DefineStructure   -g -std=c++11 -fopenmp -O0 -fopenmp -g   -std=gnu++11 -o CMakeFiles/full_syn_opt.dir/runMultiPhaseSyncType.cpp.o -c /home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/FullSyncOptimization/runMultiPhaseSyncType.cpp",
+  "file": "/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/FullSyncOptimization/runMultiPhaseSyncType.cpp"
+}
+]

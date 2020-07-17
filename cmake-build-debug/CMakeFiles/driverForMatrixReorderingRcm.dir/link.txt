@@ -1,0 +1,1 @@
+/usr/bin/c++   -g -std=c++11 -fopenmp -O0 -fopenmp -g   CMakeFiles/driverForMatrixReorderingRcm.dir/driverForMatrixReorderingRcm.cpp.o  -o driverForMatrixReorderingRcm InputsOutput/libinout.a BasicCommunitiesDetection/libbasic_cd.a Utility/libutil.a FullSyncOptimization/libfull_syn_opt.a Coloring/libcoloring.a 

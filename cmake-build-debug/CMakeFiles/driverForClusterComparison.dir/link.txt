@@ -1,0 +1,1 @@
+/usr/bin/c++   -g -std=c++11 -fopenmp -O0 -fopenmp -g   CMakeFiles/driverForClusterComparison.dir/driverForClusterComparison.cpp.o  -o driverForClusterComparison InputsOutput/libinout.a Utility/libutil.a 

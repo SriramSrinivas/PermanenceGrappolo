@@ -1,0 +1,2 @@
+/usr/bin/ar qc libfull_syn_opt.a  CMakeFiles/full_syn_opt.dir/fullSyncUtility.cpp.o CMakeFiles/full_syn_opt.dir/parallelLouvainMethodEarlyTerminate.cpp.o CMakeFiles/full_syn_opt.dir/parallelLouvainMethodFullSync.cpp.o CMakeFiles/full_syn_opt.dir/parallelLouvainMethodFullSyncEarly.cpp.o CMakeFiles/full_syn_opt.dir/runMultiPhaseSyncType.cpp.o
+/usr/bin/ranlib libfull_syn_opt.a

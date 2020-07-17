@@ -1,0 +1,824 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="GRAPPOLO"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;CMake Files\gpu_graph\;CMake Files\InputsOutput\;CMake Files\BasicCommunitiesDetection\;CMake Files\Utility\;CMake Files\Coloring\;CMake Files\FullSyncOptimization\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="install/strip">
+				<Option working_dir="/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/Makefile&quot;  VERBOSE=1 install/strip"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="install/local">
+				<Option working_dir="/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/Makefile&quot;  VERBOSE=1 install/local"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="install">
+				<Option working_dir="/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/Makefile&quot;  VERBOSE=1 install"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="list_install_components">
+				<Option working_dir="/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/Makefile&quot;  VERBOSE=1 list_install_components"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="driverForMatrixReorderingRcm">
+				<Option output="/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/driverForMatrixReorderingRcm" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DRUNONGPU=1"/>
+					<Add directory="/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/DefineStructure"/>
+					<Add directory="/usr/include/c++/7"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
+					<Add directory="/usr/include/c++/7/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/Makefile&quot;  VERBOSE=1 driverForMatrixReorderingRcm"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="driverForMatrixReorderingRcm/fast">
+				<Option output="/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/driverForMatrixReorderingRcm" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DRUNONGPU=1"/>
+					<Add directory="/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/DefineStructure"/>
+					<Add directory="/usr/include/c++/7"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
+					<Add directory="/usr/include/c++/7/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/Makefile&quot;  VERBOSE=1 driverForMatrixReorderingRcm/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="driverForClusterComparison">
+				<Option output="/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/driverForClusterComparison" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DRUNONGPU=1"/>
+					<Add directory="/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/DefineStructure"/>
+					<Add directory="/usr/include/c++/7"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
+					<Add directory="/usr/include/c++/7/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/Makefile&quot;  VERBOSE=1 driverForClusterComparison"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="driverForClusterComparison/fast">
+				<Option output="/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/driverForClusterComparison" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DRUNONGPU=1"/>
+					<Add directory="/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/DefineStructure"/>
+					<Add directory="/usr/include/c++/7"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
+					<Add directory="/usr/include/c++/7/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/Makefile&quot;  VERBOSE=1 driverForClusterComparison/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="driverForGraphClustering">
+				<Option output="/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/driverForGraphClustering" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DRUNONGPU=1"/>
+					<Add directory="/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/DefineStructure"/>
+					<Add directory="/usr/include/c++/7"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
+					<Add directory="/usr/include/c++/7/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/Makefile&quot;  VERBOSE=1 driverForGraphClustering"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="driverForGraphClustering/fast">
+				<Option output="/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/driverForGraphClustering" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DRUNONGPU=1"/>
+					<Add directory="/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/DefineStructure"/>
+					<Add directory="/usr/include/c++/7"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
+					<Add directory="/usr/include/c++/7/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/Makefile&quot;  VERBOSE=1 driverForGraphClustering/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="driverForMatrixReordering">
+				<Option output="/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/driverForMatrixReordering" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DRUNONGPU=1"/>
+					<Add directory="/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/DefineStructure"/>
+					<Add directory="/usr/include/c++/7"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
+					<Add directory="/usr/include/c++/7/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/Makefile&quot;  VERBOSE=1 driverForMatrixReordering"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="driverForMatrixReordering/fast">
+				<Option output="/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/driverForMatrixReordering" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DRUNONGPU=1"/>
+					<Add directory="/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/DefineStructure"/>
+					<Add directory="/usr/include/c++/7"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
+					<Add directory="/usr/include/c++/7/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/Makefile&quot;  VERBOSE=1 driverForMatrixReordering/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="gpu_graph">
+				<Option output="/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/gpu_graph/gpu_graph" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/gpu_graph"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DRUNONGPU=1"/>
+					<Add directory="/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/gpu_graph"/>
+					<Add directory="/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/DefineStructure"/>
+					<Add directory="/usr/include/c++/7"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
+					<Add directory="/usr/include/c++/7/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/gpu_graph/Makefile&quot;  VERBOSE=1 gpu_graph"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/gpu_graph/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/gpu_graph/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/gpu_graph/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="gpu_graph/fast">
+				<Option output="/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/gpu_graph/gpu_graph" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/gpu_graph"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DRUNONGPU=1"/>
+					<Add directory="/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/gpu_graph"/>
+					<Add directory="/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/DefineStructure"/>
+					<Add directory="/usr/include/c++/7"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
+					<Add directory="/usr/include/c++/7/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/gpu_graph/Makefile&quot;  VERBOSE=1 gpu_graph/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/gpu_graph/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/gpu_graph/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/gpu_graph/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="inout">
+				<Option output="/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/InputsOutput/libinout.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/InputsOutput"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DRUNONGPU=1"/>
+					<Add directory="/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/DefineStructure"/>
+					<Add directory="/usr/include/c++/7"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
+					<Add directory="/usr/include/c++/7/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/InputsOutput/Makefile&quot;  VERBOSE=1 inout"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/InputsOutput/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/InputsOutput/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/InputsOutput/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="inout/fast">
+				<Option output="/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/InputsOutput/libinout.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/InputsOutput"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DRUNONGPU=1"/>
+					<Add directory="/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/DefineStructure"/>
+					<Add directory="/usr/include/c++/7"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
+					<Add directory="/usr/include/c++/7/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/InputsOutput/Makefile&quot;  VERBOSE=1 inout/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/InputsOutput/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/InputsOutput/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/InputsOutput/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="basic_cd">
+				<Option output="/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/BasicCommunitiesDetection/libbasic_cd.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/BasicCommunitiesDetection"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DRUNONGPU=1"/>
+					<Add directory="/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/DefineStructure"/>
+					<Add directory="/usr/include/c++/7"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
+					<Add directory="/usr/include/c++/7/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/BasicCommunitiesDetection/Makefile&quot;  VERBOSE=1 basic_cd"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/BasicCommunitiesDetection/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/BasicCommunitiesDetection/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/BasicCommunitiesDetection/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="basic_cd/fast">
+				<Option output="/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/BasicCommunitiesDetection/libbasic_cd.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/BasicCommunitiesDetection"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DRUNONGPU=1"/>
+					<Add directory="/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/DefineStructure"/>
+					<Add directory="/usr/include/c++/7"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
+					<Add directory="/usr/include/c++/7/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/BasicCommunitiesDetection/Makefile&quot;  VERBOSE=1 basic_cd/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/BasicCommunitiesDetection/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/BasicCommunitiesDetection/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/BasicCommunitiesDetection/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="util">
+				<Option output="/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/Utility/libutil.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/Utility"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DRUNONGPU=1"/>
+					<Add directory="/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/DefineStructure"/>
+					<Add directory="/usr/include/c++/7"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
+					<Add directory="/usr/include/c++/7/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/Utility/Makefile&quot;  VERBOSE=1 util"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/Utility/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/Utility/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/Utility/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="util/fast">
+				<Option output="/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/Utility/libutil.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/Utility"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DRUNONGPU=1"/>
+					<Add directory="/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/DefineStructure"/>
+					<Add directory="/usr/include/c++/7"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
+					<Add directory="/usr/include/c++/7/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/Utility/Makefile&quot;  VERBOSE=1 util/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/Utility/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/Utility/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/Utility/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="coloring">
+				<Option output="/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/Coloring/libcoloring.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/Coloring"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DRUNONGPU=1"/>
+					<Add directory="/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/DefineStructure"/>
+					<Add directory="/usr/include/c++/7"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
+					<Add directory="/usr/include/c++/7/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/Coloring/Makefile&quot;  VERBOSE=1 coloring"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/Coloring/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/Coloring/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/Coloring/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="coloring/fast">
+				<Option output="/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/Coloring/libcoloring.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/Coloring"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DRUNONGPU=1"/>
+					<Add directory="/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/DefineStructure"/>
+					<Add directory="/usr/include/c++/7"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
+					<Add directory="/usr/include/c++/7/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/Coloring/Makefile&quot;  VERBOSE=1 coloring/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/Coloring/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/Coloring/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/Coloring/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="full_syn_opt">
+				<Option output="/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/FullSyncOptimization/libfull_syn_opt.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/FullSyncOptimization"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DRUNONGPU=1"/>
+					<Add directory="/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/DefineStructure"/>
+					<Add directory="/usr/include/c++/7"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
+					<Add directory="/usr/include/c++/7/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/FullSyncOptimization/Makefile&quot;  VERBOSE=1 full_syn_opt"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/FullSyncOptimization/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/FullSyncOptimization/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/FullSyncOptimization/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="full_syn_opt/fast">
+				<Option output="/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/FullSyncOptimization/libfull_syn_opt.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/FullSyncOptimization"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DRUNONGPU=1"/>
+					<Add directory="/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/DefineStructure"/>
+					<Add directory="/usr/include/c++/7"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
+					<Add directory="/usr/include/c++/7/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/FullSyncOptimization/Makefile&quot;  VERBOSE=1 full_syn_opt/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/FullSyncOptimization/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/FullSyncOptimization/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/FullSyncOptimization/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/BasicCommunitiesDetection/parallelLouvainMethod.cpp">
+			<Option target="basic_cd"/>
+		</Unit>
+		<Unit filename="/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/BasicCommunitiesDetection/parallelLouvainMethodApprox-2.cpp">
+			<Option target="basic_cd"/>
+		</Unit>
+		<Unit filename="/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/BasicCommunitiesDetection/parallelLouvainMethodApprox.cpp">
+			<Option target="basic_cd"/>
+		</Unit>
+		<Unit filename="/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/BasicCommunitiesDetection/parallelLouvainMethodFastTrackResistance.cpp">
+			<Option target="basic_cd"/>
+		</Unit>
+		<Unit filename="/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/BasicCommunitiesDetection/parallelLouvainMethodNoMap.cpp">
+			<Option target="basic_cd"/>
+		</Unit>
+		<Unit filename="/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/BasicCommunitiesDetection/parallelLouvainMethodNoMapFastTrackResistance.cpp">
+			<Option target="basic_cd"/>
+		</Unit>
+		<Unit filename="/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/BasicCommunitiesDetection/parallelLouvainMethodScale.cpp">
+			<Option target="basic_cd"/>
+		</Unit>
+		<Unit filename="/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/BasicCommunitiesDetection/parallelLouvainMethodScaleFastTrackResistance.cpp">
+			<Option target="basic_cd"/>
+		</Unit>
+		<Unit filename="/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/BasicCommunitiesDetection/runMultiPhaseBasic.cpp">
+			<Option target="basic_cd"/>
+		</Unit>
+		<Unit filename="/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/BasicCommunitiesDetection/runMultiPhaseBasicApprox.cpp">
+			<Option target="basic_cd"/>
+		</Unit>
+		<Unit filename="/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/BasicCommunitiesDetection/runMultiPhaseBasicFastTrackResistance.cpp">
+			<Option target="basic_cd"/>
+		</Unit>
+		<Unit filename="/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/Coloring/coloringDistanceOne.cpp">
+			<Option target="coloring"/>
+		</Unit>
+		<Unit filename="/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/Coloring/coloringMultiHashMaxMin.cpp">
+			<Option target="coloring"/>
+		</Unit>
+		<Unit filename="/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/Coloring/coloringUtils.cpp">
+			<Option target="coloring"/>
+		</Unit>
+		<Unit filename="/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/Coloring/equitableColoringDistanceOne.cpp">
+			<Option target="coloring"/>
+		</Unit>
+		<Unit filename="/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/Coloring/parallelLouvainWithColoring.cpp">
+			<Option target="coloring"/>
+		</Unit>
+		<Unit filename="/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/Coloring/parallelLouvainWithColoringNoMap.cpp">
+			<Option target="coloring"/>
+		</Unit>
+		<Unit filename="/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/Coloring/runMultiPhaseColoring.cpp">
+			<Option target="coloring"/>
+		</Unit>
+		<Unit filename="/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/Coloring/vBase.cpp">
+			<Option target="coloring"/>
+		</Unit>
+		<Unit filename="/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/FullSyncOptimization/fullSyncUtility.cpp">
+			<Option target="full_syn_opt"/>
+		</Unit>
+		<Unit filename="/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/FullSyncOptimization/parallelLouvainMethodEarlyTerminate.cpp">
+			<Option target="full_syn_opt"/>
+		</Unit>
+		<Unit filename="/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/FullSyncOptimization/parallelLouvainMethodFullSync.cpp">
+			<Option target="full_syn_opt"/>
+		</Unit>
+		<Unit filename="/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/FullSyncOptimization/parallelLouvainMethodFullSyncEarly.cpp">
+			<Option target="full_syn_opt"/>
+		</Unit>
+		<Unit filename="/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/FullSyncOptimization/runMultiPhaseSyncType.cpp">
+			<Option target="full_syn_opt"/>
+		</Unit>
+		<Unit filename="/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/InputsOutput/loadBinary.cpp">
+			<Option target="inout"/>
+		</Unit>
+		<Unit filename="/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/InputsOutput/loadDimacs.cpp">
+			<Option target="inout"/>
+		</Unit>
+		<Unit filename="/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/InputsOutput/loadEdgeList.cpp">
+			<Option target="inout"/>
+		</Unit>
+		<Unit filename="/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/InputsOutput/loadMatrixMarket.cpp">
+			<Option target="inout"/>
+		</Unit>
+		<Unit filename="/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/InputsOutput/loadMetis.cpp">
+			<Option target="inout"/>
+		</Unit>
+		<Unit filename="/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/InputsOutput/loadPajekFormat.cpp">
+			<Option target="inout"/>
+		</Unit>
+		<Unit filename="/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/InputsOutput/loadSNAP.cpp">
+			<Option target="inout"/>
+		</Unit>
+		<Unit filename="/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/InputsOutput/parseInputParameters.cpp">
+			<Option target="inout"/>
+		</Unit>
+		<Unit filename="/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/InputsOutput/writeBinary.cpp">
+			<Option target="inout"/>
+		</Unit>
+		<Unit filename="/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/InputsOutput/writeMatrixMarket.cpp">
+			<Option target="inout"/>
+		</Unit>
+		<Unit filename="/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/InputsOutput/writeSimple.cpp">
+			<Option target="inout"/>
+		</Unit>
+		<Unit filename="/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/Utility/RngStream.cpp">
+			<Option target="util"/>
+		</Unit>
+		<Unit filename="/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/Utility/buildNextPhase.cpp">
+			<Option target="util"/>
+		</Unit>
+		<Unit filename="/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/Utility/reverseCuthillMcKee.cpp">
+			<Option target="util"/>
+		</Unit>
+		<Unit filename="/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/Utility/utilityClusterComparisonMetrics.cpp">
+			<Option target="util"/>
+		</Unit>
+		<Unit filename="/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/Utility/utilityClusteringFunctions.cpp">
+			<Option target="util"/>
+		</Unit>
+		<Unit filename="/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/Utility/utilityDataStructures.cpp">
+			<Option target="util"/>
+		</Unit>
+		<Unit filename="/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/Utility/utilityFunctions.cpp">
+			<Option target="util"/>
+		</Unit>
+		<Unit filename="/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/Utility/utilitySparsificationFunctions.cpp">
+			<Option target="util"/>
+		</Unit>
+		<Unit filename="/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/Utility/vertexFollowing.cpp">
+			<Option target="util"/>
+		</Unit>
+		<Unit filename="/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/gpu_graph/CMakeFiles/gpu_graph.dir/gpu_graph_generated_aggregateCommunity.cu.o">
+			<Option target="gpu_graph"/>
+		</Unit>
+		<Unit filename="/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/gpu_graph/CMakeFiles/gpu_graph.dir/gpu_graph_generated_assignGraph.cu.o">
+			<Option target="gpu_graph"/>
+		</Unit>
+		<Unit filename="/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/gpu_graph/CMakeFiles/gpu_graph.dir/gpu_graph_generated_binWiseGaussSeidel.cu.o">
+			<Option target="gpu_graph"/>
+		</Unit>
+		<Unit filename="/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/gpu_graph/CMakeFiles/gpu_graph.dir/gpu_graph_generated_communityGPU.cu.o">
+			<Option target="gpu_graph"/>
+		</Unit>
+		<Unit filename="/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/gpu_graph/CMakeFiles/gpu_graph.dir/gpu_graph_generated_computeModularity.cu.o">
+			<Option target="gpu_graph"/>
+		</Unit>
+		<Unit filename="/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/gpu_graph/CMakeFiles/gpu_graph.dir/gpu_graph_generated_computeTime.cu.o">
+			<Option target="gpu_graph"/>
+		</Unit>
+		<Unit filename="/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/gpu_graph/CMakeFiles/gpu_graph.dir/gpu_graph_generated_coreutility.cu.o">
+			<Option target="gpu_graph"/>
+		</Unit>
+		<Unit filename="/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/gpu_graph/CMakeFiles/gpu_graph.dir/gpu_graph_generated_gatherInformation.cu.o">
+			<Option target="gpu_graph"/>
+		</Unit>
+		<Unit filename="/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/gpu_graph/CMakeFiles/gpu_graph.dir/gpu_graph_generated_graphGPU.cu.o">
+			<Option target="gpu_graph"/>
+		</Unit>
+		<Unit filename="/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/gpu_graph/CMakeFiles/gpu_graph.dir/gpu_graph_generated_independentKernels.cu.o">
+			<Option target="gpu_graph"/>
+		</Unit>
+		<Unit filename="/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/cmake-build-debug/gpu_graph/CMakeFiles/gpu_graph.dir/gpu_graph_generated_preprocessing.cu.o">
+			<Option target="gpu_graph"/>
+		</Unit>
+		<Unit filename="/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/driverForClusterComparison.cpp">
+			<Option target="driverForClusterComparison"/>
+		</Unit>
+		<Unit filename="/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/driverForGraphClustering.cpp">
+			<Option target="driverForGraphClustering"/>
+		</Unit>
+		<Unit filename="/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/driverForMatrixReordering.cpp">
+			<Option target="driverForMatrixReordering"/>
+		</Unit>
+		<Unit filename="/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/driverForMatrixReorderingRcm.cpp">
+			<Option target="driverForMatrixReorderingRcm"/>
+		</Unit>
+		<Unit filename="/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/gpu_graph/aggregateCommunity.cu">
+			<Option target="gpu_graph"/>
+		</Unit>
+		<Unit filename="/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/gpu_graph/assignGraph.cu">
+			<Option target="gpu_graph"/>
+		</Unit>
+		<Unit filename="/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/gpu_graph/binWiseGaussSeidel.cu">
+			<Option target="gpu_graph"/>
+		</Unit>
+		<Unit filename="/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/gpu_graph/communityGPU.cu">
+			<Option target="gpu_graph"/>
+		</Unit>
+		<Unit filename="/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/gpu_graph/computeModularity.cu">
+			<Option target="gpu_graph"/>
+		</Unit>
+		<Unit filename="/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/gpu_graph/computeTime.cu">
+			<Option target="gpu_graph"/>
+		</Unit>
+		<Unit filename="/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/gpu_graph/coreutility.cu">
+			<Option target="gpu_graph"/>
+		</Unit>
+		<Unit filename="/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/gpu_graph/gatherInformation.cu">
+			<Option target="gpu_graph"/>
+		</Unit>
+		<Unit filename="/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/gpu_graph/gpu_main.cpp">
+			<Option target="gpu_graph"/>
+		</Unit>
+		<Unit filename="/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/gpu_graph/graphGPU.cu">
+			<Option target="gpu_graph"/>
+		</Unit>
+		<Unit filename="/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/gpu_graph/graphHOST.cpp">
+			<Option target="gpu_graph"/>
+		</Unit>
+		<Unit filename="/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/gpu_graph/graphHOST.h">
+			<Option target="gpu_graph"/>
+		</Unit>
+		<Unit filename="/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/gpu_graph/independentKernels.cu">
+			<Option target="gpu_graph"/>
+		</Unit>
+		<Unit filename="/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/gpu_graph/preprocessing.cu">
+			<Option target="gpu_graph"/>
+		</Unit>
+		<Unit filename="/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+		<Unit filename="/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/gpu_graph/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\gpu_graph\"/>
+		</Unit>
+		<Unit filename="/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/InputsOutput/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\InputsOutput\"/>
+		</Unit>
+		<Unit filename="/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/BasicCommunitiesDetection/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\BasicCommunitiesDetection\"/>
+		</Unit>
+		<Unit filename="/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/Utility/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\Utility\"/>
+		</Unit>
+		<Unit filename="/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/Coloring/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\Coloring\"/>
+		</Unit>
+		<Unit filename="/home/sriramsrinivas@unomaha.edu/CLionProjects/grappolo/FullSyncOptimization/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\FullSyncOptimization\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

@@ -1,0 +1,2 @@
+/usr/bin/ar qc libutil.a  CMakeFiles/util.dir/buildNextPhase.cpp.o CMakeFiles/util.dir/reverseCuthillMcKee.cpp.o CMakeFiles/util.dir/RngStream.cpp.o CMakeFiles/util.dir/utilityClusterComparisonMetrics.cpp.o CMakeFiles/util.dir/utilityClusteringFunctions.cpp.o CMakeFiles/util.dir/utilityDataStructures.cpp.o CMakeFiles/util.dir/utilityFunctions.cpp.o CMakeFiles/util.dir/utilitySparsificationFunctions.cpp.o CMakeFiles/util.dir/vertexFollowing.cpp.o
+/usr/bin/ranlib libutil.a

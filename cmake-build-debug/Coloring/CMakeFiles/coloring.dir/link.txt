@@ -1,0 +1,2 @@
+/usr/bin/ar qc libcoloring.a  CMakeFiles/coloring.dir/coloringDistanceOne.cpp.o CMakeFiles/coloring.dir/coloringMultiHashMaxMin.cpp.o CMakeFiles/coloring.dir/coloringUtils.cpp.o CMakeFiles/coloring.dir/equitableColoringDistanceOne.cpp.o CMakeFiles/coloring.dir/parallelLouvainWithColoring.cpp.o CMakeFiles/coloring.dir/parallelLouvainWithColoringNoMap.cpp.o CMakeFiles/coloring.dir/runMultiPhaseColoring.cpp.o CMakeFiles/coloring.dir/vBase.cpp.o
+/usr/bin/ranlib libcoloring.a
