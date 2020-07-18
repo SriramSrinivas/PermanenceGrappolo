@@ -20,6 +20,42 @@ void printEdges(long NV, long  *vtxPtr,  edge * vtxInd)
         }
         cout<<"\n";
     }
+
+    ////    for(int i=0;i<vector_info.size();i++)
+////    {
+////
+////        cout<<i<<"\t";
+////        cout<<vector_info.at(i).degree<<"\t";
+////
+////        cout<<vector_info.at(i).Comm<<"\t";
+////
+////
+////        cout<<vector_info.at(i).perm<<"\t";
+////
+////
+////        for(int j=0;j<vector_info.at(i).comms.size();j++)
+////        {
+////            cout<<vector_info.at(i).comms.at(j)<<"\t";
+////        }
+//
+////        for(int j=0;j<vector_info.at(i).in_degree.size();j++)
+////        {
+////            cout<<vector_info.at(i).in_degree.at(j)<<"\t";
+////        }
+////
+////
+////        for(int j=0;j<vector_info.at(i).cc.size();j++)
+////        {
+////            cout<<vector_info.at(i).cc.at(j)<<"\t";
+////        }
+//
+//
+//        cout<<"\n";
+//
+//
+//    }
+
+
 }
 
 
@@ -49,8 +85,9 @@ void runPermanence(graph *G, int numThreads)
     vector_info.resize(NV, dummy_perm);
     degreeMin_seed(&NV,vtxPtr,vtxInd,&vector_info);
     cout <<"Seeding Done \n";
-   initialize_perminfo(&NV,vtxPtr,vtxInd,&max_comms,&vector_info);
+    initialize_perminfo(&NV,vtxPtr,vtxInd,&max_comms,&vector_info);
     cout <<"Initialization Done \n";
+
     //Compute Permanence
     //Set this to false if you do not want to have singleton vertices
     bool allow_singleton=true;

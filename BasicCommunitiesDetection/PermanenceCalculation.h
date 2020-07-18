@@ -177,11 +177,10 @@ void cluster_by_permanence_old(long *NV,long  *vtxPtr ,  edge  *vtxInd , int max
         oldQ=sumQ;
         sumQ=0.0;
         updates=0;
-        cout <<"Here";
+
         //Adjust position of all nodes by moving/merging them
         for(int i=0;i<*NV; i++)
         {
-
 
             //Store previous community
             int oldcomm=vector_info->at(i).Comm;
@@ -189,17 +188,13 @@ void cluster_by_permanence_old(long *NV,long  *vtxPtr ,  edge  *vtxInd , int max
 
 
             double myperm=get_permanence_old(i,vector_info->at(i),oldcomm);
-//            cout <<"At Vertex " << i <<"\n";
-
-            //Do not move node if it is in perm=1.0
 
             if(myperm==1.0)
             {   vector_info->at(i).perm=myperm;
                 sumQ=sumQ+1.0;
-                // cout << i << "=="<< vector_info->at(i).Comm <<"=="<<vector_info->at(i).perm <<"\n";
                 continue;}
 
-            //Find communities with most in_degrees;
+
             vector<int> viable_comms;
             viable_comms.clear();
             double max_degree =*max_element(vector_info->at(i).in_degree.begin(), vector_info->at(i).in_degree.end());
@@ -210,35 +205,25 @@ void cluster_by_permanence_old(long *NV,long  *vtxPtr ,  edge  *vtxInd , int max
                 {viable_comms.push_back(vector_info->at(i).comms[z]);}
             }
 
-
-            //Find Permanence for only the viable communities
             for(int z=0;z<viable_comms.size();z++)
             {
                 int thiscomm=viable_comms[z];
                 double thisperm=get_permanence_old(i,vector_info->at(i),thiscomm);
 
-                //Update Community and Permanence
+
                 if(thisperm>myperm)
                 {   myperm=thisperm;
                     newcomm=thiscomm;}
 
                 if(myperm==1.0){break;}
 
-            }//end of for
-
-
-
-            //If perm<0; check if moving to new community helps
-            //Do not move in first iteration to help adjust the seeding
+            }
             if(allow_singleton)
             {
                 if((myperm<0.0) && (iter>0))
                 {   myperm=0.0;
                     newcomm=max_comm;
                     max_comm=max_comm+1;
-
-                    //Add new community to list
-                    //Update community map and set of neighboring communities if needed
                     int map_size=(int)vector_info->at(i).comm_map.size();
                     ret=vector_info->at(i).comm_map.insert(std::pair<int,int>(newcomm,map_size));
                     if(ret.second==true)
@@ -273,7 +258,9 @@ void cluster_by_permanence_old(long *NV,long  *vtxPtr ,  edge  *vtxInd , int max
 
                 for(int z=adj1;z<adj2;z++)
                 {
+
                     int myN=vtxInd[z].tail;
+
 
                     int index_old=vector_info->at(myN).comm_map.find(oldcomm)->second;
                     vector_info->at(myN).comm_neighs[index_old].remove(i);
@@ -293,9 +280,10 @@ void cluster_by_permanence_old(long *NV,long  *vtxPtr ,  edge  *vtxInd , int max
                     if(vector_info->at(myN).comm_neighs[index_old].size()>1)
                     {
                         vector<int> mynewvector;
-                        mynewvector.resize(vector_info->at(i).comm_neighs[index_old].size());
-//                        cout <<"At VertexiimQQ 1" << i<<"\n";
-                        list<int> listObject=vector_info->at(i).comm_neighs[index_old];
+                        mynewvector.resize(vector_info->at(myN).comm_neighs[index_old].size());
+//                      cout <<"At Vertex1 " << i <<"\n";
+
+                        list<int> listObject=vector_info->at(myN).comm_neighs[index_old];
                         copy(listObject.begin(), listObject.end(), mynewvector.begin());
 
                         // mynewvector=list_to_vector(vector_info->at(myN).comm_neighs[index_old]);
@@ -303,6 +291,7 @@ void cluster_by_permanence_old(long *NV,long  *vtxPtr ,  edge  *vtxInd , int max
                         compute_CC(NV,vtxPtr,vtxInd,mynewvector, &cc);
                         vector_info->at(myN).cc[index_old]=cc;
                     }
+
 
 
                     //Check if new_comm was already a neighboring community
@@ -314,6 +303,7 @@ void cluster_by_permanence_old(long *NV,long  *vtxPtr ,  edge  *vtxInd , int max
                         vector_info->at(myN).in_degree.push_back(0.0);
                         vector_info->at(myN).cc.push_back(1.0);
                     }
+
 
                     int index_new=vector_info->at(myN).comm_map.find(newcomm)->second;
                     vector_info->at(myN).comm_neighs[index_new].push_back(i);
@@ -327,22 +317,21 @@ void cluster_by_permanence_old(long *NV,long  *vtxPtr ,  edge  *vtxInd , int max
                     if(vector_info->at(myN).comm_neighs[index_new].size()==1)
                     {vector_info->at(myN).cc[index_new]=0.0;}
                     //More than one neighbor
+
                     if(vector_info->at(myN).comm_neighs[index_new].size()>1)
                     {
-
-
                         vector<int> mynewvector;
-                        mynewvector.resize(vector_info->at(i).comm_neighs[index_new].size());
+                        mynewvector.resize(vector_info->at(myN).comm_neighs[index_new].size());
 
-                        list<int> listObject=vector_info->at(i).comm_neighs[index_new];
+                        list<int> listObject=vector_info->at(myN).comm_neighs[index_new];
+
                         copy(listObject.begin(), listObject.end(), mynewvector.begin());
-
 
                         //mynewvector=list_to_vector(vector_info->at(myN).comm_neighs[index_new]);
                         compute_CC(NV,vtxPtr,vtxInd,mynewvector, &cc);
+
                         vector_info->at(myN).cc[index_new]=cc;
                     }
-
 
 
                 }//end of for neighbors

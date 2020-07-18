@@ -24,7 +24,7 @@ void get_neighbors(int node,long  *vtxPtr ,  edge  *vtxInd, vector<int> *neighbo
 
 void compute_CC(long *NV,long  *vtxPtr , edge  *vtxInd , vector<int> node_set, double *cc)
 {
-    if(node_set.size()<2) {return;}
+    if(node_set.size()<2) {return  ;}
     *cc=0.0;
     double numerator=0.0;
     double denominator=0.0;
