@@ -177,15 +177,15 @@ void findDegree1andAssignCommunity(long  *vtxPtr , edge  *vtxInd,vector <Perm_In
 {
     vector<bool> visit(vector_info->size(),false);
     for(int i=0;i<selected->size();i++) {
-        cout<<selected->at(i)<<"--"<<"\n";
+        cout<<selected->at(i)<<"--"<<vector_info->at(selected->at(i)).Comm<<"\n";
         vector<int>tmpneigh= get_neighbors(selected->at(i),vtxPtr,vtxInd);
 
         for(int j=0;j<tmpneigh.size();j++)
         {cout <<selected->at(i)<<"---" <<tmpneigh.at(j)<<"---"<<vector_info->at(j).Comm<<"\n";
             if(visit[tmpneigh.at(j)]!=true) {
-                vector_info->at(j).Comm = vector_info->at(selected->at(i)).Comm;
+                vector_info->at(tmpneigh.at(j)).Comm = vector_info->at(selected->at(i)).Comm;
                 visit[tmpneigh.at(j)]=true;
-                cout<<"after" <<tmpneigh.at(j)<<"---"<<vector_info->at(j).Comm<<"\n";
+                cout<<"after" <<tmpneigh.at(j)<<"---"<<vector_info->at(tmpneigh.at(j)).Comm<<"\n";
             }
         }
     }
