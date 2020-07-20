@@ -60,7 +60,7 @@ void printEdges(long NV, long  *vtxPtr,  edge * vtxInd)
 
 
 
-void runPermanence(graph *G, int numThreads, char **argv)
+void runPermanence(graph *G, int numThreads, char **argv, int argc)
 {
 
     cout<<"Inside Permanence Code"<<"\n";
@@ -83,13 +83,18 @@ void runPermanence(graph *G, int numThreads, char **argv)
     int max_comms;
     Perm_Info dummy_perm;
     vector_info.resize(NV, dummy_perm);
-    degreeMin_seed(&NV,vtxPtr,vtxInd,&vector_info);
     /*Clustering Coefficient Seeding will call Parallel Louvian, get communities, next using Boost, all vertices are ranked based on top Clustering Coefficient.
      * Next the code selects top 10 % of the vertices based on rank, followed by its neighbor and assign them to a community. the seeding is then fed to the initialize perminfo
      * routine
      *
      * */
-    clusteringCoefficient_seed(&NV,vtxPtr,vtxInd,&vector_info,argv);
+    if(argc>4) {
+        cout <<"Doing Clustering Coefficient Seed \n";
+        clusteringCoefficient_seed(&NV, vtxPtr, vtxInd, &vector_info, argv, argc);
+    } else{
+        cout <<"Doing Degree  Seed \n";
+        degreeMin_seed(&NV,vtxPtr,vtxInd,&vector_info);
+    }
     cout <<"Seeding Done \n";
     initialize_perminfo(&NV,vtxPtr,vtxInd,&max_comms,&vector_info);
     cout <<"Initialization Done \n";

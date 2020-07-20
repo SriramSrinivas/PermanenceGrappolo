@@ -8,18 +8,23 @@
 #include <iostream>
 #include <list>
 
-void get_neighbors(int node,long  *vtxPtr ,  edge  *vtxInd, vector<int> *neighbors)
+vector<int> get_neighbors(int node,long  *vtxPtr ,  edge  *vtxInd)
 {
+     vector<int> tmpNeighbors;
+     tmpNeighbors.clear();
     //clear neighbors;
-    neighbors->clear();
+//    neighbors->clear();
     long adj1 = vtxPtr[node];
     long adj2 = vtxPtr[node+1];
 
     //Add the neighbors;
     for(int i=adj1;i<adj2;i++)
-    {neighbors->push_back(vtxInd[i].tail);}
+    {
+        //neighbors->push_back(vtxInd[i].tail);
+     tmpNeighbors.push_back(vtxInd[i].tail);
+    }
 
-    return;}
+    return tmpNeighbors;}
 
 
 void compute_CC(long *NV,long  *vtxPtr , edge  *vtxInd , vector<int> node_set, double *cc)
@@ -39,7 +44,7 @@ void compute_CC(long *NV,long  *vtxPtr , edge  *vtxInd , vector<int> node_set, d
         myneighbors.clear();
 
 
-        get_neighbors(nx,vtxPtr,vtxInd, &myneighbors);
+         myneighbors=get_neighbors(nx,vtxPtr,vtxInd);
 
         //No need to sort myneighbors as neighbors aranged in increasing order
 //        common_neighs=intersect(myneighbors, node_set);
@@ -59,6 +64,54 @@ void compute_CC(long *NV,long  *vtxPtr , edge  *vtxInd , vector<int> node_set, d
     *cc=numerator/denominator;
 
     return;
+}
+
+vector<int>findDegree1Neighbors(vector<int> *neighbor,long  *vtxPtr , edge  *vtxInd)
+{
+    vector<int> nodeSet;
+    nodeSet.clear();
+
+
+        for (int i = 0; i < neighbor->size(); i++) {
+            vector<int> tmpNeighbors = get_neighbors(neighbor->at(i), vtxPtr, vtxInd);
+
+            for (int j = 0; j < tmpNeighbors.size(); j++) {
+                nodeSet.push_back(tmpNeighbors.at(j));
+            }
+
+        }
+
+
+
+
+    return nodeSet;
+}
+
+double  computeClusteringCoefficient(long *NV,long  *vtxPtr , edge  *vtxInd , int *node)
+{
+    double tmpCC=0.00;
+    vector<int> myneighbors;
+    myneighbors.clear();
+    vector<int> node_set;
+    node_set.clear();
+    myneighbors=get_neighbors(*node,vtxPtr,vtxInd);
+
+    node_set=findDegree1Neighbors(&myneighbors,vtxPtr,vtxInd);
+
+    vector<int> common_neighs;
+    common_neighs.clear();
+
+    std::set_intersection(myneighbors.begin(), myneighbors.end(),
+                          node_set.begin(), node_set.end(),
+                          std::back_inserter(common_neighs));
+
+
+    if((myneighbors.size()-1)>0 && common_neighs.size()>0) {
+        tmpCC = (double)(2 * common_neighs.size()) /(double) ((myneighbors.size()) * (myneighbors.size() - 1));
+    }
+
+   return tmpCC;
+
 }
 
 #endif //GRAPPOLO_INTERNALCC_H

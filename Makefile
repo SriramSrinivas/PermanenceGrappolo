@@ -8,7 +8,7 @@ CPPFLAGS = -g -Ofast -fopenmp -std=c++11
 METIS_HOME = $(HOME)/metis-5.1.0
 METIS_INCLUDE = -I$(METIS_HOME)/include
 METIS_LIB = -L$(METIS_HOME)/lib -lmetis -lm
-BOOST_ROOT= boost_1_66_0
+
 LDFLAGS  = $(CPPFLAGS)
 #INCLUDES = ./DefineStructure/
 INCLUDES = ./DefineStructure/ $(METIS_INCLUDE)

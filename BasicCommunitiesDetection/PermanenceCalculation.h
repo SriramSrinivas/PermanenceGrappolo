@@ -346,6 +346,13 @@ void cluster_by_permanence_old(long *NV,long  *vtxPtr ,  edge  *vtxInd , int max
 
         cout << "At Iteration " << iter << " the total permanence is " << sumQ << "\n";
         iter++;
+//        for(int z=0;z< vector_info->size();z++)
+//        {
+//            cout << z << "::"<< vector_info->at(z).Comm << "::" << vector_info->at(z).perm <<"\n";
+//
+//        }
+
+
     }//end of while
 
 

@@ -93,7 +93,7 @@ int main(int argc, char** argv)
     }//End of if( VF == 1 )
 
 
-    runPermanence(G, nT, argv);
+    runPermanence(G, nT, argv, argc);
 
 
 
