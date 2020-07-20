@@ -4,6 +4,28 @@
 
 #ifndef GRAPPOLO_SEEDING_H
 #define GRAPPOLO_SEEDING_H
+
+#include <bits/stdc++.h>
+#include<string>
+#include <sstream>
+#include <iostream>
+#include <fstream>
+
+#include <boost/graph/adjacency_list.hpp>
+
+#include <boost/archive/text_oarchive.hpp>
+#include <boost/archive/text_iarchive.hpp>
+#include <boost/serialization/vector.hpp>
+
+typedef
+boost::adjacency_list<
+        boost::vecS            // edge list
+        , boost::vecS            // vertex list
+        , boost::directedS     // directedness
+        , float                  // property associated with vertices
+>
+        Graph;
+
 void degreeMin_seed(long *NV,long  *vtxPtr ,  edge  *vtxInd , vector <Perm_Info> *vector_info)
 {
     vector<int_double> degree_order;
@@ -82,5 +104,29 @@ void degreeMin_seed(long *NV,long  *vtxPtr ,  edge  *vtxInd , vector <Perm_Info>
 //    {
 //        cout<<degree_order[i].first<<"-----"<<degree_order[i].second<<"\n";
 //    }
+
+
+void runParallelLouvain(char **argv)
+{
+    string commandToCallParallelLouvain="./driverForGraphClustering ";
+    commandToCallParallelLouvain+= argv[4];
+    commandToCallParallelLouvain+=" -f 5";
+    commandToCallParallelLouvain+=" -o";
+    const char *command=commandToCallParallelLouvain.c_str();
+    cout << "Running file using " << command << endl;
+    system(command);
+}
+
+
+void  clusteringCoefficient_seed(long *NV,long  *vtxPtr ,  edge  *vtxInd , vector <Perm_Info> *vector_info, char ** argv)
+{
+    /** Call Parallel Louvain and get Community**/
+
+  runParallelLouvain(argv);
+  /** Call Boost Clustering Coefficient **/
+
+
+
+}
 
 #endif //GRAPPOLO_SEEDING_H

@@ -1,5 +1,5 @@
 .idea
-Makefile
 driverForGraphClustering
 driverForGraphClusteringFastTrackResistance
 driverForGraphPermanence
+boost_1_73_0/

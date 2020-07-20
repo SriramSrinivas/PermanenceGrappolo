@@ -5,7 +5,7 @@
 void runMultiPhaseBasic(graph *G, long *C_orig, int basicOpt, long minGraphSize,
 			double threshold, double C_threshold, int numThreads, int threadsOpt);
 
-void runPermanence(graph *G, int numThreads);
+void runPermanence(graph *G, int numThreads, char **argv);
 
 // same as above, but runs exactly one phase
 void runMultiPhaseBasicOnce(graph *G, long *C_orig, int basicOpt, long minGraphSize,
