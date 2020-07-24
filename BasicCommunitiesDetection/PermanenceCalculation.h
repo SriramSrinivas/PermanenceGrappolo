@@ -199,6 +199,8 @@ void cluster_by_permanence_old(long *NV,long  *vtxPtr ,  edge  *vtxInd , int max
             viable_comms.clear();
             double max_degree =*max_element(vector_info->at(i).in_degree.begin(), vector_info->at(i).in_degree.end());
 
+            // check viable communities which has potential to increase permanence and has high external connections to node i
+
             for (int z=0;z<vector_info->at(i).in_degree.size();z++)
             {
                 if((vector_info->at(i).in_degree[z]==max_degree) && (vector_info->at(i).comms[z]!=oldcomm))
@@ -207,6 +209,7 @@ void cluster_by_permanence_old(long *NV,long  *vtxPtr ,  edge  *vtxInd , int max
 
             for(int z=0;z<viable_comms.size();z++)
             {
+
                 int thiscomm=viable_comms[z];
                 double thisperm=get_permanence_old(i,vector_info->at(i),thiscomm);
 
@@ -268,7 +271,7 @@ void cluster_by_permanence_old(long *NV,long  *vtxPtr ,  edge  *vtxInd , int max
 
                     //Update Clustering Coefficient
                     //No neighbors in this community
-
+                     // potential race condition myN
                     if(vector_info->at(myN).comm_neighs[index_old].size()==0.0)
                     {vector_info->at(myN).cc[index_old]=1.0;}
                     //Only one neighbor

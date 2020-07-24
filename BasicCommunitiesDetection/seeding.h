@@ -12,6 +12,9 @@
 #include <fstream>
 #include <math.h>
 #include "internalCC.h"
+#include "defs.h"
+#include "basic_comm.h"
+#include "basic_util.h"
 typedef pair<int,double> cc;
 void degreeMin_seed(long *NV,long  *vtxPtr ,  edge  *vtxInd , vector <Perm_Info> *vector_info)
 {
@@ -104,15 +107,16 @@ void runParallelLouvain(char ** argv)
     cout << "Running file using " << command << endl;
     system(command);
 }
-
-void calculateClusteringCoefficient(long *NV, vector<cc> *ccVec,long  *vtxPtr , edge  *vtxInd){
+// rename function name to avoid confusion
+void calculateClusteringCoeffGraph(long *NV, vector<cc> *ccVec,long  *vtxPtr , edge  *vtxInd){
         for(int i=0;i<*NV;i++)
         {
             double clusteringCoefficient=0.0;
-            clusteringCoefficient= computeClusteringCoefficient(NV,vtxPtr,vtxInd,&i);
+            clusteringCoefficient= computeClusteringCoeffVertex(NV,vtxPtr,vtxInd,&i); //Add comments
             ccVec->push_back(std::make_pair(i,clusteringCoefficient));
         }
 }
+// Sort in decending order
 void sortClusteringCoefficient(vector<cc> *ccVec)
 {
     std::sort(ccVec->begin(), ccVec->end(),
@@ -134,6 +138,8 @@ void printClusteringCoefficient(vector<cc> *ccVec)
     }
 
 }
+
+// Select to 10percent vertices which has high CC
 vector<int> selecttop10percentClusteringCoefficient(long *NV,vector<cc> *ccVec)
 {
     int value=*NV;
@@ -149,7 +155,7 @@ vector<int> selecttop10percentClusteringCoefficient(long *NV,vector<cc> *ccVec)
 
 }
 
-void readLouvainOutput(vector <Perm_Info> *vector_info, char **argv)
+int  readLouvainOutput(vector <Perm_Info> *vector_info, char **argv)
 {
     string fileName=argv[4];
     fileName+= "_clustInfo";
@@ -158,59 +164,101 @@ void readLouvainOutput(vector <Perm_Info> *vector_info, char **argv)
     int a;
     std::string str;
     int i=0;
+    int maxcID=0;
+
     while (std::getline(infile, str)) {
         vector_info->at(i).Comm=std::stoi(str);
+        if(maxcID< (vector_info->at(i).Comm)) {
+            maxcID = vector_info->at(i).Comm;
+        }
         i++;
     }
+
+    return maxcID;
 
 }
 
 void printvectorInfoOutput(vector <Perm_Info> *vector_info)
 {
+//#pragma omp parallel for
     for(int i=0;i<vector_info->size();i++)
     {
         cout <<i<<"---"<< vector_info->at(i).Comm<<"\n";
     }
 }
-
-void findDegree1andAssignCommunity(long  *vtxPtr , edge  *vtxInd,vector <Perm_Info> *vector_info,vector<int> *selected)
+// change to create new cluster
+void findOneHopandAssignCommunity(long  *vtxPtr , edge  *vtxInd,vector <Perm_Info> *vector_info,vector<int> *selected, int *maxcID)
 {
     vector<bool> visit(vector_info->size(),false);
+    int tmpcID=*maxcID+1;
     for(int i=0;i<selected->size();i++) {
-        cout<<selected->at(i)<<"--"<<vector_info->at(selected->at(i)).Comm<<"\n";
-        vector<int>tmpneigh= get_neighbors(selected->at(i),vtxPtr,vtxInd);
 
-        for(int j=0;j<tmpneigh.size();j++)
-        {cout <<selected->at(i)<<"---" <<tmpneigh.at(j)<<"---"<<vector_info->at(j).Comm<<"\n";
-            if(visit[tmpneigh.at(j)]!=true) {
-                vector_info->at(tmpneigh.at(j)).Comm = vector_info->at(selected->at(i)).Comm;
-                visit[tmpneigh.at(j)]=true;
-                cout<<"after" <<tmpneigh.at(j)<<"---"<<vector_info->at(tmpneigh.at(j)).Comm<<"\n";
+        if(visit[selected->at(i)]!=true) {
+            vector_info->at(selected->at(i)).Comm = tmpcID;
+            cout << selected->at(i) << "--" << vector_info->at(selected->at(i)).Comm << "\n";
+            vector<int> tmpneigh = get_neighbors(selected->at(i), vtxPtr, vtxInd);
+
+            for (int j = 0; j < tmpneigh.size(); j++) {
+                cout << selected->at(i) << "---" << tmpneigh.at(j) << "---" << vector_info->at(tmpneigh.at(j)).Comm << "\n";
+                if (visit[tmpneigh.at(j)] != true) {
+                    vector_info->at(tmpneigh.at(j)).Comm = vector_info->at(selected->at(i)).Comm;
+                    visit[tmpneigh.at(j)] = true;
+                    cout << "after" << tmpneigh.at(j) << "---" << vector_info->at(tmpneigh.at(j)).Comm << "\n";
+                }
             }
+            tmpcID += 1;
         }
+
     }
+}
+
+void renumberClusters(long *C,vector <Perm_Info> *vector_info)
+{
+#pragma omp parallel for
+    for(int i=0;i<vector_info->size();i++)
+    {
+        C[i]=vector_info->at(i).Comm;
+    }
+
+    renumberClustersContiguously(C, (long)vector_info->size());
+#pragma omp parallel for
+    for(int i=0;i<vector_info->size();i++)
+    {
+        vector_info->at(i).Comm=C[i];
+    }
+
+
 }
 void  clusteringCoefficient_seed(long *NV,long  *vtxPtr , edge  *vtxInd , vector <Perm_Info> *vector_info, char ** argv, int argc)
 {
     /** Call Parallel Louvain and get Community**/
 
     runParallelLouvain(argv);
-    readLouvainOutput(vector_info,argv);
+    // Get Max community ID
+    int maxcID=readLouvainOutput(vector_info,argv);
+    cout<<maxcID;
+
 
     /* print method is just for testing*/
   //  printvectorInfoOutput(vector_info);
 
   /** Compute Clustering Coefficient **/
   vector<cc> ccVec;
-calculateClusteringCoefficient(NV, &ccVec, vtxPtr,vtxInd);
+calculateClusteringCoeffGraph(NV, &ccVec, vtxPtr,vtxInd);
 sortClusteringCoefficient(&ccVec);
 // Print to just see sort is perfoming correctly
 //printClusteringCoefficient(&ccVec);
 vector<int>selected=selecttop10percentClusteringCoefficient(NV,&ccVec);
 // next find 1 degree of all selected and assign them same community
-findDegree1andAssignCommunity(vtxPtr,vtxInd,vector_info,&selected);
+findOneHopandAssignCommunity(vtxPtr,vtxInd,vector_info,&selected, &maxcID);
+
+// Map to C all comms and update community ID
+long *C = (long *) malloc (*NV * sizeof(long));
+//// update C to be used for renumberClustersContiguously
+renumberClusters(C, vector_info);
+
 /* print method is just for testing*/
-//printvectorInfoOutput(vector_info);
+    printvectorInfoOutput(vector_info);
 
 }
 

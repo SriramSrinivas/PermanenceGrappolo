@@ -49,7 +49,6 @@ void compute_CC(long *NV,long  *vtxPtr , edge  *vtxInd , vector<int> node_set, d
         //No need to sort myneighbors as neighbors aranged in increasing order
 //        common_neighs=intersect(myneighbors, node_set);
 
-
         std::set_intersection(myneighbors.begin(), myneighbors.end(),
                               node_set.begin(), node_set.end(),
                               std::back_inserter(common_neighs));
@@ -66,7 +65,7 @@ void compute_CC(long *NV,long  *vtxPtr , edge  *vtxInd , vector<int> node_set, d
     return;
 }
 
-vector<int>findDegree1Neighbors(vector<int> *neighbor,long  *vtxPtr , edge  *vtxInd)
+vector<int>findHop1Neighbors(vector<int> *neighbor, long  *vtxPtr , edge  *vtxInd)
 {
     vector<int> nodeSet;
     nodeSet.clear();
@@ -83,11 +82,10 @@ vector<int>findDegree1Neighbors(vector<int> *neighbor,long  *vtxPtr , edge  *vtx
 
 
 
-
     return nodeSet;
 }
 
-double  computeClusteringCoefficient(long *NV,long  *vtxPtr , edge  *vtxInd , int *node)
+double  computeClusteringCoeffVertex(long *NV,long  *vtxPtr , edge  *vtxInd , int *node)
 {
     double tmpCC=0.00;
     vector<int> myneighbors;
@@ -95,16 +93,14 @@ double  computeClusteringCoefficient(long *NV,long  *vtxPtr , edge  *vtxInd , in
     vector<int> node_set;
     node_set.clear();
     myneighbors=get_neighbors(*node,vtxPtr,vtxInd);
-
-    node_set=findDegree1Neighbors(&myneighbors,vtxPtr,vtxInd);
-
+    node_set=findHop1Neighbors(&myneighbors,vtxPtr,vtxInd);
+    /* vector not recommended*/
     vector<int> common_neighs;
     common_neighs.clear();
 
     std::set_intersection(myneighbors.begin(), myneighbors.end(),
                           node_set.begin(), node_set.end(),
                           std::back_inserter(common_neighs));
-
 
     if((myneighbors.size()-1)>0 && common_neighs.size()>0) {
         tmpCC = (double)(2 * common_neighs.size()) /(double) ((myneighbors.size()) * (myneighbors.size() - 1));
