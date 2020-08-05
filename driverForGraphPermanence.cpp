@@ -69,6 +69,7 @@ int main(int argc, char** argv)
     int replaceMap = 0;
     if(  opts.basicOpt == 1 )
         replaceMap = 1;
+
     if( opts.VF ) {
         printf("Vertex following is enabled.\n");
         time1 = omp_get_wtime();
@@ -93,8 +94,8 @@ int main(int argc, char** argv)
     }//End of if( VF == 1 )
 
 
-    runPermanence(G, nT, argv, argc);
 
+    runPermanence(G,&opts,&threadsOpt, nT, argv, argc);
 
 
     return 0;

@@ -5,37 +5,14 @@
 #ifndef GRAPPOLO_PERMANENCECALCULATION_H
 #define GRAPPOLO_PERMANENCECALCULATION_H
 
+
 #include "internalCC.h"
 #include <algorithm>
 #include <iostream>
 #include <list>
+
+#include "basic_util.h"
 typedef pair<int,double>int_double;
-struct Perm_Info
-{
-    double degree; //vertex degree
-    vector<list<int>> comm_neighs;//neighbors in each community
-    vector<int>  comms;//list of neighboring communities including own
-    vector<double> in_degree; //weighed degree for each community
-    vector<double> cc; //clustering coefficient for each community
-    std::map<int,int> comm_map; //Map between community id and their position in comm_neighs
-
-    int Comm;  //community id
-    double perm ; //permanence
-
-    //Constructor
-    Perm_Info()
-    {
-        degree=0.0;
-        comm_neighs.clear();
-        in_degree.clear();
-        comms.clear();
-        comm_map.clear();
-        cc.clear();
-
-        Comm=-1;
-        perm=-1.0;
-    }
-};
 
 void initialize_perminfo(long *NV,long  *vtxPtr ,  edge  *vtxInd , int *max_comm, vector<Perm_Info> *vector_info)
 {
@@ -44,6 +21,7 @@ void initialize_perminfo(long *NV,long  *vtxPtr ,  edge  *vtxInd , int *max_comm
     std::pair<std::map<int,int>::iterator,bool> ret;
 
     *max_comm=0;
+
     for(int i=0;i<vector_info->size();i++)
     {
 
@@ -63,8 +41,10 @@ void initialize_perminfo(long *NV,long  *vtxPtr ,  edge  *vtxInd , int *max_comm
         long adj2 = vtxPtr[i+1];
 
         //cout <<"Initializing Vertex " << i <<"\n";
-        for(int z=adj1;z<adj2;z++)
+        for(int z=0;z<vector_info->at(i).neighbors.size();z++)
         {
+
+
             //Get Degree
             vector_info->at(i).degree=vector_info->at(i).degree+1;
 
@@ -86,6 +66,7 @@ void initialize_perminfo(long *NV,long  *vtxPtr ,  edge  *vtxInd , int *max_comm
             int index=vector_info->at(i).comm_map.find(myN_comm)->second;
             vector_info->at(i).comm_neighs[index].push_back(myN);
             vector_info->at(i).in_degree[index]=vector_info->at(i).in_degree[index]+1;
+
 
         }//end of for z
 
@@ -110,7 +91,7 @@ void initialize_perminfo(long *NV,long  *vtxPtr ,  edge  *vtxInd , int *max_comm
                 copy(listObject.begin(), listObject.end(), mynewvector.begin());
 
                 //mynewvector=list_to_vector(vector_info->at(i).comm_neighs[z]);
-                compute_CC(NV,vtxPtr,vtxInd,mynewvector, &cc);
+                compute_Internal_CC(NV,vtxPtr,vtxInd,mynewvector, &cc,vector_info);
             }
             vector_info->at(i).cc[z]=cc;
         }//end of for z
@@ -149,7 +130,112 @@ double get_permanence_old(int i, Perm_Info myvector, int mycomm)
     return perm;
 }
 
+void updateVertexValuesWhichHasNewCommunity (long *NV,long  *vtxPtr ,  edge  *vtxInd ,vector<Perm_Info> *vector_info,   int *updates, vector<long> * vertexMarkedForUpdateAfterEachIteration )
+{
 
+//Update for neighbors
+//Add node i to new internal neighbors
+//Remove node i to old internal neighbors
+//Always do old_comm BEFORE new_comm
+    std::pair<std::map<int,int>::iterator,bool> ret;
+// Can't use Pragma Parallel loop because of race condition issues , still need to figure this how to resolve
+    for (int i = 0; i <vertexMarkedForUpdateAfterEachIteration->size(); i++) {
+
+        *updates++;
+        vector<int> mynewvector;
+        list<int> dummy;
+        dummy.clear();
+
+            long adj1 = vtxPtr[vertexMarkedForUpdateAfterEachIteration->at(i)];
+            long adj2 = vtxPtr[vertexMarkedForUpdateAfterEachIteration->at(i) + 1];
+            double cc;
+
+            for (int z = 0; z < vector_info->at(vertexMarkedForUpdateAfterEachIteration->at(i)).neighbors.size(); z++) {
+
+                int myN = vector_info->at(vertexMarkedForUpdateAfterEachIteration->at(i)).neighbors.at(z);
+                int index_old = vector_info->at(myN).comm_map.find(vector_info->at(vertexMarkedForUpdateAfterEachIteration->at(i)).oldComm)->second;
+                vector_info->at(myN).comm_neighs[index_old].remove(vertexMarkedForUpdateAfterEachIteration->at(i));
+                vector_info->at(myN).in_degree[index_old] = vector_info->at(myN).in_degree[index_old] - 1;
+
+
+                //Update Clustering Coefficient
+                //No neighbors in this community
+                // potential race condition myN
+                if (vector_info->at(myN).comm_neighs[index_old].size() == 0.0) {
+                    vector_info->at(myN).cc[index_old] = 1.0;
+                }
+                //Only one neighbor
+
+                if (vector_info->at(myN).comm_neighs[index_old].size() == 1) {
+                    vector_info->at(myN).cc[index_old] = 0.0;
+                }
+                //More than one neighbor
+
+                if (vector_info->at(myN).comm_neighs[index_old].size() > 1) {
+                    vector<int> mynewvector;
+                    mynewvector.resize(vector_info->at(myN).comm_neighs[index_old].size());
+//                      cout <<"At Vertex1 " << i <<"\n";
+
+                    list<int> listObject = vector_info->at(myN).comm_neighs[index_old];
+                    copy(listObject.begin(), listObject.end(), mynewvector.begin());
+
+                    // mynewvector=list_to_vector(vector_info->at(myN).comm_neighs[index_old]);
+
+                    compute_Internal_CC(NV, vtxPtr, vtxInd, mynewvector, &cc,vector_info);
+                    vector_info->at(myN).cc[index_old] = cc;
+                }
+
+
+
+                //Check if new_comm was already a neighboring community
+                int map_size = (int) vector_info->at(myN).comm_map.size();
+                ret = vector_info->at(myN).comm_map.insert(std::pair<int, int>(vector_info->at(vertexMarkedForUpdateAfterEachIteration->at(i)).newComm, map_size));
+                if (ret.second == true) {
+                    vector_info->at(myN).comm_neighs.push_back(dummy);
+                    vector_info->at(myN).comms.push_back(vector_info->at(i).newComm);
+                    vector_info->at(myN).in_degree.push_back(0.0);
+                    vector_info->at(myN).cc.push_back(1.0);
+                }
+
+
+                int index_new = vector_info->at(myN).comm_map.find(vector_info->at(i).newComm)->second;
+                vector_info->at(myN).comm_neighs[index_new].push_back(vertexMarkedForUpdateAfterEachIteration->at(i));
+                vector_info->at(myN).in_degree[index_new] = vector_info->at(myN).in_degree[index_new] + 1;
+
+                //Update Clustering Coefficient
+                //No neighbors in this community
+                if (vector_info->at(myN).comm_neighs[index_new].size() == 0.0) {
+                    vector_info->at(myN).cc[index_new] = 1.0;
+                }
+                //Only one neighbor
+                if (vector_info->at(myN).comm_neighs[index_new].size() == 1) {
+                    vector_info->at(myN).cc[index_new] = 0.0;
+                }
+                //More than one neighbor
+
+                if (vector_info->at(myN).comm_neighs[index_new].size() > 1) {
+                    vector<int> mynewvector;
+                    mynewvector.resize(vector_info->at(myN).comm_neighs[index_new].size());
+
+                    list<int> listObject = vector_info->at(myN).comm_neighs[index_new];
+
+                    copy(listObject.begin(), listObject.end(), mynewvector.begin());
+
+                    //mynewvector=list_to_vector(vector_info->at(myN).comm_neighs[index_new]);
+                    compute_Internal_CC(NV, vtxPtr, vtxInd, mynewvector, &cc,vector_info);
+
+                    vector_info->at(myN).cc[index_new] = cc;
+                }
+
+
+            }//end of for neighbors
+
+
+
+        }
+
+
+}
 
 
 void cluster_by_permanence_old(long *NV,long  *vtxPtr ,  edge  *vtxInd , int max_comm,vector<Perm_Info> *vector_info, bool allow_singleton)
@@ -168,27 +254,30 @@ void cluster_by_permanence_old(long *NV,long  *vtxPtr ,  edge  *vtxInd , int max
     std::list<int>::iterator it;
     std::pair<std::map<int,int>::iterator,bool> ret;
     int  updates=1;
+    vector<long> vertexMarkedForUpdateAfterEachIteration;
+
 
     while( iter < max_iter && ((updates>0) ||(oldQ!=sumQ)))
     {
         cout << "ITER ======  "<< iter <<"\n";
+
         cout <<"Here";
         //Update permanence
+        vertexMarkedForUpdateAfterEachIteration.clear();
         oldQ=sumQ;
         sumQ=0.0;
         updates=0;
 
         //Adjust position of all nodes by moving/merging them
+        // Added parallel loop
+//        #pragma omp parallel for
         for(int i=0;i<*NV; i++)
         {
 
             //Store previous community
             int oldcomm=vector_info->at(i).Comm;
             int newcomm=oldcomm;
-
-
             double myperm=get_permanence_old(i,vector_info->at(i),oldcomm);
-
             if(myperm==1.0)
             {   vector_info->at(i).perm=myperm;
                 sumQ=sumQ+1.0;
@@ -213,7 +302,7 @@ void cluster_by_permanence_old(long *NV,long  *vtxPtr ,  edge  *vtxInd , int max
                 int thiscomm=viable_comms[z];
                 double thisperm=get_permanence_old(i,vector_info->at(i),thiscomm);
 
-
+        // if Permanence increases we move to that community update values and use that for the next iteration
                 if(thisperm>myperm)
                 {   myperm=thisperm;
                     newcomm=thiscomm;}
@@ -238,106 +327,22 @@ void cluster_by_permanence_old(long *NV,long  *vtxPtr ,  edge  *vtxInd , int max
                 }//end of if
             }
 
-
-
             //Update community and permanence
             vector_info->at(i).Comm=newcomm;
             vector_info->at(i).perm=myperm;
-            sumQ=sumQ+myperm;
+            sumQ=sumQ+myperm;  // change after only iteration ends
 
-            //Update the values in vector_info if node moves
+            //Update the values in vector_info if node moves, just mark those for now. Later after the iteration is complete update  vector_info
+
             if(oldcomm!=newcomm)
+
             {
-                updates++;
+//                vertexMarkedForUpdateAfterEachIteration.push_back(i);
 
-                //Update for neighbors
-                //Add node i to new internal neighbors
-                //Remove node i to old internal neighbors
-                //Always do old_comm BEFORE new_comm
-                vector<int> mynewvector;
-                double cc;
-                long adj1 = vtxPtr[i];
-                long adj2 = vtxPtr[i+1];
-
-                for(int z=adj1;z<adj2;z++)
-                {
-
-                    int myN=vtxInd[z].tail;
-
-
-                    int index_old=vector_info->at(myN).comm_map.find(oldcomm)->second;
-                    vector_info->at(myN).comm_neighs[index_old].remove(i);
-                    vector_info->at(myN).in_degree[index_old]=vector_info->at(myN).in_degree[index_old]-1;
-
-                    //Update Clustering Coefficient
-                    //No neighbors in this community
-                     // potential race condition myN
-                    if(vector_info->at(myN).comm_neighs[index_old].size()==0.0)
-                    {vector_info->at(myN).cc[index_old]=1.0;}
-                    //Only one neighbor
-
-                    if(vector_info->at(myN).comm_neighs[index_old].size()==1)
-                    {vector_info->at(myN).cc[index_old]=0.0;}
-                    //More than one neighbor
-
-                    if(vector_info->at(myN).comm_neighs[index_old].size()>1)
-                    {
-                        vector<int> mynewvector;
-                        mynewvector.resize(vector_info->at(myN).comm_neighs[index_old].size());
-//                      cout <<"At Vertex1 " << i <<"\n";
-
-                        list<int> listObject=vector_info->at(myN).comm_neighs[index_old];
-                        copy(listObject.begin(), listObject.end(), mynewvector.begin());
-
-                        // mynewvector=list_to_vector(vector_info->at(myN).comm_neighs[index_old]);
-
-                        compute_CC(NV,vtxPtr,vtxInd,mynewvector, &cc);
-                        vector_info->at(myN).cc[index_old]=cc;
-                    }
-
-
-
-                    //Check if new_comm was already a neighboring community
-                    int map_size=(int)vector_info->at(myN).comm_map.size();
-                    ret=vector_info->at(myN).comm_map.insert(std::pair<int,int>(newcomm,map_size));
-                    if(ret.second==true)
-                    {vector_info->at(myN).comm_neighs.push_back(dummy);
-                        vector_info->at(myN).comms.push_back(newcomm);
-                        vector_info->at(myN).in_degree.push_back(0.0);
-                        vector_info->at(myN).cc.push_back(1.0);
-                    }
-
-
-                    int index_new=vector_info->at(myN).comm_map.find(newcomm)->second;
-                    vector_info->at(myN).comm_neighs[index_new].push_back(i);
-                    vector_info->at(myN).in_degree[index_new]=vector_info->at(myN).in_degree[index_new]+1;
-
-                    //Update Clustering Coefficient
-                    //No neighbors in this community
-                    if(vector_info->at(myN).comm_neighs[index_new].size()==0.0)
-                    {vector_info->at(myN).cc[index_new]=1.0;}
-                    //Only one neighbor
-                    if(vector_info->at(myN).comm_neighs[index_new].size()==1)
-                    {vector_info->at(myN).cc[index_new]=0.0;}
-                    //More than one neighbor
-
-                    if(vector_info->at(myN).comm_neighs[index_new].size()>1)
-                    {
-                        vector<int> mynewvector;
-                        mynewvector.resize(vector_info->at(myN).comm_neighs[index_new].size());
-
-                        list<int> listObject=vector_info->at(myN).comm_neighs[index_new];
-
-                        copy(listObject.begin(), listObject.end(), mynewvector.begin());
-
-                        //mynewvector=list_to_vector(vector_info->at(myN).comm_neighs[index_new]);
-                        compute_CC(NV,vtxPtr,vtxInd,mynewvector, &cc);
-
-                        vector_info->at(myN).cc[index_new]=cc;
-                    }
-
-
-                }//end of for neighbors
+// store i , new comm and old comm  of i
+                vector_info->at(i).oldComm=oldcomm;
+                vector_info->at(i).newComm=newcomm;
+                vertexMarkedForUpdateAfterEachIteration.push_back(i);
 
             }//end of if node moved
 
@@ -346,14 +351,17 @@ void cluster_by_permanence_old(long *NV,long  *vtxPtr ,  edge  *vtxInd , int max
 
 
         }//end of checking all nodes
-
         cout << "At Iteration " << iter << " the total permanence is " << sumQ << "\n";
         iter++;
-//        for(int z=0;z< vector_info->size();z++)
-//        {
-//            cout << z << "::"<< vector_info->at(z).Comm << "::" << vector_info->at(z).perm <<"\n";
-//
-//        }
+
+        // Update  only after Iteration
+        // This step is performed after iteration is complete, during current iteration it uses the previous iteration values or initial values
+       updateVertexValuesWhichHasNewCommunity(NV,vtxPtr,vtxInd,vector_info, &updates, &vertexMarkedForUpdateAfterEachIteration);
+
+        for(int z=0;z< vector_info->size();z++)
+        {
+            cout << z << "::"<< vector_info->at(z).Comm << "::" << vector_info->at(z).perm << " "<< vector_info->at(z).updateFlag<<"\n";
+        }
 
 
     }//end of while

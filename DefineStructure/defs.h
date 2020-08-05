@@ -55,8 +55,8 @@
 #include <fstream>
 #include <map>
 #include <vector>
+#include <list>
 #include <unistd.h> //For getopts()
-
 #define MilanRealMax HUGE_VAL       // +INFINITY
 #define MilanRealMin -MilanRealMax  // -INFINITY
 
@@ -68,6 +68,38 @@ typedef struct comm
     long size;
     double degree;
 }Comm;
+
+struct Perm_Info
+{
+    double degree; //vertex degree
+    std::vector<std::list<int>> comm_neighs;//neighbors in each community
+    std::vector<int>  comms;//list of neighboring communities including own
+    std::vector<double> in_degree; //weighed degree for each community
+    std::vector<double> cc; //clustering coefficient for each community
+    std::map<int,int> comm_map; //Map between community id and their position in comm_neighs
+    std::vector<int> neighbors; // storing neighbors in sorted order
+    int Comm;  //community id
+    int oldComm;
+    int newComm;
+    double perm ; //permanence
+    bool updateFlag ; // just mark which one needs to be updated after each iteration
+
+    //Constructor
+    Perm_Info()
+    {
+        degree=0.0;
+        comm_neighs.clear();
+        in_degree.clear();
+        comms.clear();
+        comm_map.clear();
+        cc.clear();
+        neighbors.clear();
+
+        Comm=0;
+        perm=-1.0;
+        updateFlag=false;
+    }
+};
 
 typedef struct
 {

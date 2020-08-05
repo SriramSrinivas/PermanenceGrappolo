@@ -95,25 +95,53 @@ void degreeMin_seed(long *NV,long  *vtxPtr ,  edge  *vtxInd , vector <Perm_Info>
 //        cout<<degree_order[i].first<<"-----"<<degree_order[i].second<<"\n";
 //    }
 
-
-void runParallelLouvain(char ** argv)
+int getCommFromLouvainOutput(vector <Perm_Info> *vector_info, long *C_orig)
 {
 
-    string commandToCallParallelLouvain="./driverForGraphClustering ";
-    commandToCallParallelLouvain+= argv[4];
-    commandToCallParallelLouvain+=" -f 5";
-    commandToCallParallelLouvain+=" -o";
-    const char *command=commandToCallParallelLouvain.c_str();
-    cout << "Running file using " << command << endl;
-    system(command);
+    int i=0;
+    int maxcID=0;
+    for(int i=0;i<vector_info->size();i++){
+        vector_info->at(i).Comm=C_orig[i];
+        if(maxcID< (vector_info->at(i).Comm)) {
+            maxcID = vector_info->at(i).Comm;
+        }
+    }
+
+    return maxcID;
+
+}
+
+int runParallelLouvain(graph *G,long *C_orig, clustering_parameters *opts, int *nT, int *threadsOpt ,vector <Perm_Info> *vector_info,char ** argv)
+{
+
+//    string commandToCallParallelLouvain="./driverForGraphClustering ";
+//    commandToCallParallelLouvain+= argv[4];
+//    commandToCallParallelLouvain+=" -f 5";
+//    commandToCallParallelLouvain+=" -o";
+//    const char *command=commandToCallParallelLouvain.c_str();
+//    cout << "Running file using " << command << endl;
+//    system(command);
+//
+//    cout<<G->numVertices<<"verte"<<"\n";
+#pragma omp parallel for
+    for (long i=0; i<G->numVertices; i++) {
+        C_orig[i] = -1;
+
+    }
+  runMultiPhaseBasic(G, C_orig, opts->basicOpt, opts->minGraphSize, opts->threshold, opts->C_thresh, *nT,*threadsOpt);
+  int maxcID=getCommFromLouvainOutput(vector_info, C_orig);
+    return maxcID;
 }
 // rename function name to avoid confusion
-void calculateClusteringCoeffGraph(long *NV, vector<cc> *ccVec,long  *vtxPtr , edge  *vtxInd){
+void calculateClusteringCoeffGraph(long *NV,vector <Perm_Info> *vector_info, vector<cc> *ccVec,long  *vtxPtr , edge  *vtxInd){
+
+#pragma omp parallel for
         for(int i=0;i<*NV;i++)
         {
             double clusteringCoefficient=0.0;
-            clusteringCoefficient= computeClusteringCoeffVertex(NV,vtxPtr,vtxInd,&i); //Add comments
+            clusteringCoefficient= computeClusteringCoeffVertex(NV,vtxPtr,vtxInd,&i, vector_info); //Not ready for parallel still working on removing intersection
             ccVec->push_back(std::make_pair(i,clusteringCoefficient));
+
         }
 }
 // Sort in decending order
@@ -155,28 +183,6 @@ vector<int> selecttop10percentClusteringCoefficient(long *NV,vector<cc> *ccVec)
 
 }
 
-int  readLouvainOutput(vector <Perm_Info> *vector_info, char **argv)
-{
-    string fileName=argv[4];
-    fileName+= "_clustInfo";
-    cout<<fileName;
-    std::ifstream infile(fileName);
-    int a;
-    std::string str;
-    int i=0;
-    int maxcID=0;
-
-    while (std::getline(infile, str)) {
-        vector_info->at(i).Comm=std::stoi(str);
-        if(maxcID< (vector_info->at(i).Comm)) {
-            maxcID = vector_info->at(i).Comm;
-        }
-        i++;
-    }
-
-    return maxcID;
-
-}
 
 void printvectorInfoOutput(vector <Perm_Info> *vector_info)
 {
@@ -196,7 +202,7 @@ void findOneHopandAssignCommunity(long  *vtxPtr , edge  *vtxInd,vector <Perm_Inf
         if(visit[selected->at(i)]!=true) {
             vector_info->at(selected->at(i)).Comm = tmpcID;
             cout << selected->at(i) << "--" << vector_info->at(selected->at(i)).Comm << "\n";
-            vector<int> tmpneigh = get_neighbors(selected->at(i), vtxPtr, vtxInd);
+            vector<int> tmpneigh = get_neighbors(selected->at(i), vtxPtr, vtxInd,vector_info);
 
             for (int j = 0; j < tmpneigh.size(); j++) {
                 cout << selected->at(i) << "---" << tmpneigh.at(j) << "---" << vector_info->at(tmpneigh.at(j)).Comm << "\n";
@@ -212,7 +218,7 @@ void findOneHopandAssignCommunity(long  *vtxPtr , edge  *vtxInd,vector <Perm_Inf
     }
 }
 
-void renumberClusters(long *C,vector <Perm_Info> *vector_info)
+long renumberClusters(long *C,vector <Perm_Info> *vector_info, int * max_comms)
 {
 #pragma omp parallel for
     for(int i=0;i<vector_info->size();i++)
@@ -221,31 +227,32 @@ void renumberClusters(long *C,vector <Perm_Info> *vector_info)
     }
 
     renumberClustersContiguously(C, (long)vector_info->size());
-#pragma omp parallel for
+
+    #pragma omp parallel for
     for(int i=0;i<vector_info->size();i++)
     {
         vector_info->at(i).Comm=C[i];
+        if(*max_comms<C[i])
+        {
+            *max_comms=C[i];
+        }
     }
 
 
+
 }
-void  clusteringCoefficient_seed(long *NV,long  *vtxPtr , edge  *vtxInd , vector <Perm_Info> *vector_info, char ** argv, int argc)
+void  clusteringCoefficient_seed( graph *G,clustering_parameters *opts, int *threadsOpt , int *nT, long *NV,long  *vtxPtr , edge  *vtxInd , vector <Perm_Info> *vector_info, char ** argv, int argc, int  *max_comms)
 {
     /** Call Parallel Louvain and get Community**/
-
-    runParallelLouvain(argv);
-    // Get Max community ID
-    int maxcID=readLouvainOutput(vector_info,argv);
-    cout<<maxcID;
-
-
-    /* print method is just for testing*/
-  //  printvectorInfoOutput(vector_info);
-
-  /** Compute Clustering Coefficient **/
+    long *C_orig = (long *) malloc (*NV * sizeof(long)); assert(C_orig != 0);
+    int maxcID=runParallelLouvain(G, C_orig, opts, nT ,threadsOpt, vector_info, argv);
+    printvectorInfoOutput(vector_info);
   vector<cc> ccVec;
-calculateClusteringCoeffGraph(NV, &ccVec, vtxPtr,vtxInd);
+  ccVec.resize(*NV);
+  calculateClusteringCoeffGraph(NV, vector_info, &ccVec, vtxPtr,vtxInd); // work still in IP for avoid using intersection
+
 sortClusteringCoefficient(&ccVec);
+
 // Print to just see sort is perfoming correctly
 //printClusteringCoefficient(&ccVec);
 vector<int>selected=selecttop10percentClusteringCoefficient(NV,&ccVec);
@@ -255,10 +262,11 @@ findOneHopandAssignCommunity(vtxPtr,vtxInd,vector_info,&selected, &maxcID);
 // Map to C all comms and update community ID
 long *C = (long *) malloc (*NV * sizeof(long));
 //// update C to be used for renumberClustersContiguously
-renumberClusters(C, vector_info);
+renumberClusters(C, vector_info, max_comms);
 
 /* print method is just for testing*/
-    printvectorInfoOutput(vector_info);
+printvectorInfoOutput(vector_info);
+
 
 }
 
