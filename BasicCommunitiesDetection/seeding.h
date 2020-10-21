@@ -129,13 +129,14 @@ int runParallelLouvain(graph *G,long *C_orig, clustering_parameters *opts, int *
 
     }
   runMultiPhaseBasic(G, C_orig, opts->basicOpt, opts->minGraphSize, opts->threshold, opts->C_thresh, *nT,*threadsOpt);
+
   int maxcID=getCommFromLouvainOutput(vector_info, C_orig);
     return maxcID;
 }
 // rename function name to avoid confusion
 void calculateClusteringCoeffGraph(long *NV,vector <Perm_Info> *vector_info, vector<cc> *ccVec,long  *vtxPtr , edge  *vtxInd){
 
-#pragma omp parallel for
+//#pragma omp parallel for
         for(int i=0;i<*NV;i++)
         {
             double clusteringCoefficient=0.0;
@@ -174,7 +175,7 @@ vector<int> selecttop10percentClusteringCoefficient(long *NV,vector<cc> *ccVec)
     vector<int>selected;
     selected.clear();
 
-    double selectSize=ceil((value* (double)((double)10/(double)100)));
+    double selectSize=ceil((value* (double)((double)90/(double)100)));
     for(int i=0;i<selectSize;i++)
     {
         selected.push_back(ccVec->at(i).first);
@@ -193,6 +194,7 @@ void printvectorInfoOutput(vector <Perm_Info> *vector_info)
     }
 }
 // change to create new cluster
+// This routine is called after vertex has idenfied in seeding to have high CC, next all the neighbors are identified and assign new communities, can be done in parallel still need to discuss
 void findOneHopandAssignCommunity(long  *vtxPtr , edge  *vtxInd,vector <Perm_Info> *vector_info,vector<int> *selected, int *maxcID)
 {
     vector<bool> visit(vector_info->size(),false);
@@ -238,19 +240,20 @@ long renumberClusters(long *C,vector <Perm_Info> *vector_info, int * max_comms)
         }
     }
 
-
-
 }
 void  clusteringCoefficient_seed( graph *G,clustering_parameters *opts, int *threadsOpt , int *nT, long *NV,long  *vtxPtr , edge  *vtxInd , vector <Perm_Info> *vector_info, char ** argv, int argc, int  *max_comms)
 {
     /** Call Parallel Louvain and get Community**/
     long *C_orig = (long *) malloc (*NV * sizeof(long)); assert(C_orig != 0);
+    //run Parallel louvain and get maxCID so that the vertices which have high CC can be assigned to new community and new commmunity ID should be increment of maxCID obtained from Louvain
     int maxcID=runParallelLouvain(G, C_orig, opts, nT ,threadsOpt, vector_info, argv);
+    // print is optional just kept here for debugging and testing
     printvectorInfoOutput(vector_info);
   vector<cc> ccVec;
   ccVec.resize(*NV);
+  // Calculates CC still uses instersection work is ongoing to remove intersection
   calculateClusteringCoeffGraph(NV, vector_info, &ccVec, vtxPtr,vtxInd); // work still in IP for avoid using intersection
-
+// sorts in decending order to select vertices which have High CC
 sortClusteringCoefficient(&ccVec);
 
 // Print to just see sort is perfoming correctly
@@ -269,5 +272,8 @@ printvectorInfoOutput(vector_info);
 
 
 }
+
+
+
 
 #endif //GRAPPOLO_SEEDING_H

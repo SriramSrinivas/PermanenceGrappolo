@@ -19,6 +19,7 @@ void printEdges(long NV, long  *vtxPtr,  edge * vtxInd)
         for(long j=adj1; j<adj2; j++) {
             cout <<vtxInd[j].tail<<" ";
         }
+        cout <<adj2-adj1 <<"\t";
         cout<<"\n";
     }
 
@@ -79,6 +80,8 @@ void runPermanence(graph *G, clustering_parameters *opts, int *threadsOpt , int 
     } else{
         cout <<"Doing Degree  Seed \n";
         degreeMin_seed(&NV,vtxPtr,vtxInd,&vector_info);
+
+
     }
     cout <<"Seeding Done \n";
 
@@ -87,12 +90,12 @@ void runPermanence(graph *G, clustering_parameters *opts, int *threadsOpt , int 
 
     //Compute Permanence
     //Set this to false if you do not want to have singleton vertices
-    bool allow_singleton=false;
+    bool allow_singleton=false; // check for biological network
     cluster_by_permanence_old(&NV,vtxPtr,vtxInd, max_comms, &vector_info,allow_singleton);
     double permanence=0.0;
-    for(int z=0;z< vector_info.size();z++)
-    {   permanence=permanence+vector_info[z].perm;
-        cout << z << "::"<< vector_info[z].Comm << "::" << vector_info[z].perm <<"\n";}
-    cout << "Total Permanence : ==" << permanence  << "\n";
+//    for(int z=0;z< vector_info.size();z++)
+//    {   permanence=permanence+vector_info[z].perm;
+//        cout << z << "::"<< vector_info[z].Comm << "::" << vector_info[z].perm <<"\n";}
+//    cout << "Total Permanence : ==" << permanence  << "\n";
     }
 

@@ -28,6 +28,7 @@ void initialize_perminfo(long *NV,long  *vtxPtr ,  edge  *vtxInd , int *max_comm
         //Add entry for own community
         //Update community map and set of neighboring communities if needed
         int myComm=vector_info->at(i).Comm;
+
         int map_size=(int)vector_info->at(i).comm_map.size();
         ret=vector_info->at(i).comm_map.insert(std::pair<int,int>(myComm,map_size));
         if(ret.second==true)
@@ -37,8 +38,8 @@ void initialize_perminfo(long *NV,long  *vtxPtr ,  edge  *vtxInd , int *max_comm
             vector_info->at(i).cc.push_back(1.0);
         }//end of if
 
-        long adj1 = vtxPtr[i];
-        long adj2 = vtxPtr[i+1];
+//        long adj1 = vtxPtr[i];
+//        long adj2 = vtxPtr[i+1];
 
         //cout <<"Initializing Vertex " << i <<"\n";
         for(int z=0;z<vector_info->at(i).neighbors.size();z++)
@@ -49,7 +50,7 @@ void initialize_perminfo(long *NV,long  *vtxPtr ,  edge  *vtxInd , int *max_comm
             vector_info->at(i).degree=vector_info->at(i).degree+1;
 
             //Get Community of neighbors
-            int myN=vtxInd[z].tail;
+            int myN=vector_info->at(i).neighbors.at(z);
             int myN_comm=vector_info->at(myN).Comm;
 
             //Update community map and set of neighboring communities if needed
@@ -103,7 +104,28 @@ void initialize_perminfo(long *NV,long  *vtxPtr ,  edge  *vtxInd , int *max_comm
     }//end of for i
     return;
 }
+long renumberClustersFortest(long *C,vector <Perm_Info> *vector_info, int * max_comms)
+{
+#pragma omp parallel for
+    for(int i=0;i<vector_info->size();i++)
+    {
+        C[i]=vector_info->at(i).Comm;
+    }
 
+    renumberClustersContiguously(C, (long)vector_info->size());
+
+#pragma omp parallel for
+    for(int i=0;i<vector_info->size();i++)
+    {
+        vector_info->at(i).Comm=C[i];
+        if(*max_comms<C[i])
+        {
+            *max_comms=C[i];
+        }
+    }
+    cout <<"done"<<"\n";
+
+}
 
 double get_permanence_old(int i, Perm_Info myvector, int mycomm)
 {
@@ -130,7 +152,7 @@ double get_permanence_old(int i, Perm_Info myvector, int mycomm)
     return perm;
 }
 
-void updateVertexValuesWhichHasNewCommunity (long *NV,long  *vtxPtr ,  edge  *vtxInd ,vector<Perm_Info> *vector_info,   int *updates, vector<long> * vertexMarkedForUpdateAfterEachIteration )
+void updateVertexValuesWhichHasNewCommunity (long *NV,long  *vtxPtr ,  edge  *vtxInd ,vector<Perm_Info> *vector_info,   int *updates, long* vertexMarkedForUpdateAfterEachIteration, long * nodeTrackerForVertexMarkedForUpdateAfterEachIteration )
 {
 
 //Update for neighbors
@@ -139,22 +161,21 @@ void updateVertexValuesWhichHasNewCommunity (long *NV,long  *vtxPtr ,  edge  *vt
 //Always do old_comm BEFORE new_comm
     std::pair<std::map<int,int>::iterator,bool> ret;
 // Can't use Pragma Parallel loop because of race condition issues , still need to figure this how to resolve
-    for (int i = 0; i <vertexMarkedForUpdateAfterEachIteration->size(); i++) {
-
+    for (int i = 0; i <*nodeTrackerForVertexMarkedForUpdateAfterEachIteration; i++) {
         *updates++;
         vector<int> mynewvector;
         list<int> dummy;
         dummy.clear();
 
-            long adj1 = vtxPtr[vertexMarkedForUpdateAfterEachIteration->at(i)];
-            long adj2 = vtxPtr[vertexMarkedForUpdateAfterEachIteration->at(i) + 1];
+            long adj1 = vtxPtr[vertexMarkedForUpdateAfterEachIteration[i]];
+            long adj2 = vtxPtr[vertexMarkedForUpdateAfterEachIteration[i] + 1];
             double cc;
 
-            for (int z = 0; z < vector_info->at(vertexMarkedForUpdateAfterEachIteration->at(i)).neighbors.size(); z++) {
+            for (int z = 0; z < vector_info->at(vertexMarkedForUpdateAfterEachIteration[i]).neighbors.size(); z++) {
 
-                int myN = vector_info->at(vertexMarkedForUpdateAfterEachIteration->at(i)).neighbors.at(z);
-                int index_old = vector_info->at(myN).comm_map.find(vector_info->at(vertexMarkedForUpdateAfterEachIteration->at(i)).oldComm)->second;
-                vector_info->at(myN).comm_neighs[index_old].remove(vertexMarkedForUpdateAfterEachIteration->at(i));
+                int myN = vector_info->at(vertexMarkedForUpdateAfterEachIteration[i]).neighbors.at(z);
+                int index_old = vector_info->at(myN).comm_map.find(vector_info->at(vertexMarkedForUpdateAfterEachIteration[i]).oldComm)->second;
+                vector_info->at(myN).comm_neighs[index_old].remove(vertexMarkedForUpdateAfterEachIteration[i]);
                 vector_info->at(myN).in_degree[index_old] = vector_info->at(myN).in_degree[index_old] - 1;
 
 
@@ -189,7 +210,7 @@ void updateVertexValuesWhichHasNewCommunity (long *NV,long  *vtxPtr ,  edge  *vt
 
                 //Check if new_comm was already a neighboring community
                 int map_size = (int) vector_info->at(myN).comm_map.size();
-                ret = vector_info->at(myN).comm_map.insert(std::pair<int, int>(vector_info->at(vertexMarkedForUpdateAfterEachIteration->at(i)).newComm, map_size));
+                ret = vector_info->at(myN).comm_map.insert(std::pair<int, int>(vector_info->at(vertexMarkedForUpdateAfterEachIteration[i]).newComm, map_size));
                 if (ret.second == true) {
                     vector_info->at(myN).comm_neighs.push_back(dummy);
                     vector_info->at(myN).comms.push_back(vector_info->at(i).newComm);
@@ -199,7 +220,7 @@ void updateVertexValuesWhichHasNewCommunity (long *NV,long  *vtxPtr ,  edge  *vt
 
 
                 int index_new = vector_info->at(myN).comm_map.find(vector_info->at(i).newComm)->second;
-                vector_info->at(myN).comm_neighs[index_new].push_back(vertexMarkedForUpdateAfterEachIteration->at(i));
+                vector_info->at(myN).comm_neighs[index_new].push_back(vertexMarkedForUpdateAfterEachIteration[i]);
                 vector_info->at(myN).in_degree[index_new] = vector_info->at(myN).in_degree[index_new] + 1;
 
                 //Update Clustering Coefficient
@@ -246,35 +267,38 @@ void cluster_by_permanence_old(long *NV,long  *vtxPtr ,  edge  *vtxInd , int max
     //Iterate until precision is reached
     double sumQ=0.0; //total permannece of network
     double oldQ=-1;
-    int max_iter=10;
+    int max_iter=10000;
     int iter=0;
-
+    int  updates=0;
     list<int> dummy;
     dummy.clear();
     std::list<int>::iterator it;
     std::pair<std::map<int,int>::iterator,bool> ret;
-    int  updates=1;
-    vector<long> vertexMarkedForUpdateAfterEachIteration;
+
+//    vector<long> vertexMarkedForUpdateAfterEachIteration;
+    long * vertexMarkedForUpdateAfterEachIteration = (long *)malloc (*NV*sizeof(long));
 
 
     while( iter < max_iter && ((updates>0) ||(oldQ!=sumQ)))
     {
         cout << "ITER ======  "<< iter <<"\n";
-
         cout <<"Here";
-        //Update permanence
-        vertexMarkedForUpdateAfterEachIteration.clear();
         oldQ=sumQ;
         sumQ=0.0;
         updates=0;
+        #pragma omp parallel for
+        for(long i = 0; i < *NV; i++) {
+            vertexMarkedForUpdateAfterEachIteration[i] = 0;
+
+        }
+
+        long nodeTrackerForVertexMarkedForUpdateAfterEachIteration=0;
 
         //Adjust position of all nodes by moving/merging them
         // Added parallel loop
-//        #pragma omp parallel for
+        #pragma omp parallel for
         for(int i=0;i<*NV; i++)
-        {
-
-            //Store previous community
+        {//Store previous community
             int oldcomm=vector_info->at(i).Comm;
             int newcomm=oldcomm;
             double myperm=get_permanence_old(i,vector_info->at(i),oldcomm);
@@ -282,8 +306,6 @@ void cluster_by_permanence_old(long *NV,long  *vtxPtr ,  edge  *vtxInd , int max
             {   vector_info->at(i).perm=myperm;
                 sumQ=sumQ+1.0;
                 continue;}
-
-
             vector<int> viable_comms;
             viable_comms.clear();
             double max_degree =*max_element(vector_info->at(i).in_degree.begin(), vector_info->at(i).in_degree.end());
@@ -326,37 +348,41 @@ void cluster_by_permanence_old(long *NV,long  *vtxPtr ,  edge  *vtxInd , int max
 
                 }//end of if
             }
-
             //Update community and permanence
             vector_info->at(i).Comm=newcomm;
             vector_info->at(i).perm=myperm;
             sumQ=sumQ+myperm;  // change after only iteration ends
-
             //Update the values in vector_info if node moves, just mark those for now. Later after the iteration is complete update  vector_info
-
             if(oldcomm!=newcomm)
-
             {
 //                vertexMarkedForUpdateAfterEachIteration.push_back(i);
 
 // store i , new comm and old comm  of i
                 vector_info->at(i).oldComm=oldcomm;
                 vector_info->at(i).newComm=newcomm;
-                vertexMarkedForUpdateAfterEachIteration.push_back(i);
+                cout <<vertexMarkedForUpdateAfterEachIteration[nodeTrackerForVertexMarkedForUpdateAfterEachIteration]<< "\t" <<nodeTrackerForVertexMarkedForUpdateAfterEachIteration <<"\n";
+
+//                __sync_fetch_and_add(&vertexMarkedForUpdateAfterEachIteration[nodeTrackerForVertexMarkedForUpdateAfterEachIteration], i);
+                vertexMarkedForUpdateAfterEachIteration[ __sync_fetch_and_add(&nodeTrackerForVertexMarkedForUpdateAfterEachIteration, 1)] = i;
+//                vertexMarkedForUpdateAfterEachIteration[nodeTrackerForVertexMarkedForUpdateAfterEachIteration]=i;
+//                nodeTrackerForVertexMarkedForUpdateAfterEachIteration++;
 
             }//end of if node moved
 
 
-            //cout << i << "=="<< vector_info->at(i).Comm <<"=="<<vector_info->at(i).perm <<"\n";
-
 
         }//end of checking all nodes
-        cout << "At Iteration " << iter << " the total permanence is " << sumQ << "\n";
+        cout << "At Iteration " << iter << " the total permanence is " << sumQ << "\t"<<nodeTrackerForVertexMarkedForUpdateAfterEachIteration<<"\n";
         iter++;
+
+        for(int i=0;i<nodeTrackerForVertexMarkedForUpdateAfterEachIteration;i++)
+        {
+            cout<<vertexMarkedForUpdateAfterEachIteration[i]<<"\n";
+        }
 
         // Update  only after Iteration
         // This step is performed after iteration is complete, during current iteration it uses the previous iteration values or initial values
-       updateVertexValuesWhichHasNewCommunity(NV,vtxPtr,vtxInd,vector_info, &updates, &vertexMarkedForUpdateAfterEachIteration);
+       updateVertexValuesWhichHasNewCommunity(NV,vtxPtr,vtxInd,vector_info, &updates, vertexMarkedForUpdateAfterEachIteration, &nodeTrackerForVertexMarkedForUpdateAfterEachIteration);
 
         for(int z=0;z< vector_info->size();z++)
         {
@@ -367,6 +393,7 @@ void cluster_by_permanence_old(long *NV,long  *vtxPtr ,  edge  *vtxInd , int max
     }//end of while
 
 
+
     //Update the final permanences
     for(int i=0;i<vector_info->size();i++)
     {
@@ -375,6 +402,17 @@ void cluster_by_permanence_old(long *NV,long  *vtxPtr ,  edge  *vtxInd , int max
 
     }
 
+    long *C = (long *) malloc (*NV * sizeof(long));
+    int max_comms=0;
+//// update C to be used for renumberClustersContiguously
+    renumberClustersFortest(C, vector_info, &max_comms);
+    std::ofstream myFile("output.csv");
+    cout << "At Iteration " << iter;
+//    myFile <<""<<","<<"x"<<"\n";
+    for(int z=0;z< vector_info->size();z++)
+    {    myFile <<z <<" "<<vector_info->at(z).Comm<<"\n";
+//            cout << z << "::"<< vector_info->at(z).Comm<<"\n";
+    }
 
     return;
 }
