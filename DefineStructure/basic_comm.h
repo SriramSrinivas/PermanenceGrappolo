@@ -7,6 +7,9 @@ void runMultiPhaseBasic(graph *G, long *C_orig, int basicOpt, long minGraphSize,
 
 void runPermanence(graph *G, clustering_parameters *opts, int *threadsOpt , int numThreads, char **argv, int argc);
 
+void runOverlappingPermanence(graph *G, clustering_parameters *opts, int *threadsOpt , int numThreads, char **argv, int argc);
+
+
 // same as above, but runs exactly one phase
 void runMultiPhaseBasicOnce(graph *G, long *C_orig, int basicOpt, long minGraphSize,
 			double threshold, double C_threshold, int numThreads, int threadsOpt);

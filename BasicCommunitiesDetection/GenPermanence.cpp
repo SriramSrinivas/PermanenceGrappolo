@@ -25,6 +25,26 @@ void runOverlappingPermanence(graph *G, clustering_parameters *opts, int *thread
 
     NeighborMin_seed(NV,vtxPtr,vtxInd, &PI);
 
-    optimize_permanence(NV,vtxPtr,vtxInd, &PI);
+//    for(int i=0;i<NV;i++)
+//    {printf("%d::%d \n",i, PI[i].ListPI[0].first);}
+
+
+    int max_comm=-1;
+#pragma omp parallel for schedule(static)
+    for(int i=NV-1;i>=0;i--)
+    {
+        if(max_comm<PI[i].ListPI[0].first)
+
+        { cout << "Thread"<<omp_get_num_threads()<<"\n";
+#pragma omp atomic write
+
+            max_comm=PI[i].ListPI[0].first;
+
+
+        }
+    }
+
+
+    optimize_permanence(NV,vtxPtr,vtxInd, &PI, &max_comm);
 
 }

@@ -62,13 +62,13 @@
 
 #define PRINT_DETAILED_STATS_
 //#define PRINT_TERSE_STATS_
-
+using namespace std;
 typedef struct comm
 {
     long size;
     double degree;
 }Comm;
-
+// Data Structure for Permanence only used for permanence calculation, still work in IP to optimize it
 struct Perm_Info
 {
     double degree; //vertex degree
@@ -100,6 +100,39 @@ struct Perm_Info
         updateFlag=false;
     }
 };
+
+
+struct int2_dbl
+{
+    int first;
+    double second;
+    int third;
+
+    //Constructor
+    int2_dbl( )
+    {
+        first=-1;
+        second=0.0;
+        third=0;
+    }
+};
+
+
+struct P_Info
+{
+    //First =community Id
+    //Second=Permanence for that community
+    //Third=numerator of the internal cc in the community
+    vector<int2_dbl> ListPI;
+
+
+    //Constructor
+    P_Info()
+    {ListPI.resize(0);}
+};
+
+typedef vector<P_Info> PI_Network;
+
 
 typedef struct
 {
