@@ -93,14 +93,12 @@ void compute_permanence_overlap(long NV, long  *vtxPtr,  edge * vtxInd, PI_Netwo
         );
 
         //If there are no common communities--use all the neigh comm
-        if(relevant_Comm.size()==0)
-        { relevant_Comm=neigh_Comm;
+        if(relevant_Comm.size()==0){ relevant_Comm=neigh_Comm;
             mycomm=false;
         }
 
         //find the communities to which it belongs
-        for(long j=0;j<relevant_Comm.size();j++)
-        {
+        for(long j=0;j<relevant_Comm.size();j++){
             long neigh_comm=relevant_Comm[j];
 
             //update connections to external community
@@ -133,10 +131,9 @@ void compute_permanence_overlap(long NV, long  *vtxPtr,  edge * vtxInd, PI_Netwo
     long max_size=-1;
     long max_size2=-1;
 
-    for(long i=0;i<C_Info.size();i++)
-    {
-        if((C_Info[i].size()>max_size) && (!C_self[i]))
-        {max_size=C_Info[i].size();
+    for(long i=0;i<C_Info.size();i++){
+        if((C_Info[i].size()>max_size) && (!C_self[i])){
+            max_size=C_Info[i].size();
             max_index=i;
         }
     }
@@ -158,16 +155,14 @@ void compute_permanence_overlap(long NV, long  *vtxPtr,  edge * vtxInd, PI_Netwo
 
 
     double Emaxd_inv;
-    if(max_size==-1)
-    {Emaxd_inv=1.0/(double)(degree);}
-    else
-    {Emaxd_inv=1.0/(double)(degree*max_size);}
+    if(max_size==-1){
+        Emaxd_inv=1.0/(double)(degree);}
+    else{
+        Emaxd_inv=1.0/(double)(degree*max_size);}
 
     double Emaxd2_inv;
-    if(max_size2==-1)
-    {Emaxd2_inv=1.0/(double)(degree);}
-    else
-    {Emaxd2_inv=1.0/(double)(degree*max_size2);}
+    if(max_size2==-1){Emaxd2_inv=1.0/(double)(degree);}
+    else{Emaxd2_inv=1.0/(double)(degree*max_size2);}
 
     //prlongf("%f  %f \n", Emaxd_inv, Emaxd2_inv);
     vector<int_double> cc_values;
@@ -182,8 +177,7 @@ void compute_permanence_overlap(long NV, long  *vtxPtr,  edge * vtxInd, PI_Netwo
     // cout<<"::::LKLKL::: \n";
 
     //For each community computing Perm
-    for(long i=0;i<C_Info.size();i++)
-    {
+    for(long i=0;i<C_Info.size();i++){
         long numerator=0;
         cc_values[i].first=i;
         if(C_Info[i].size()>1)
@@ -225,8 +219,7 @@ void compute_permanence_overlap(long NV, long  *vtxPtr,  edge * vtxInd, PI_Netwo
 
     //Such that each node has at least one community--community with highest permanence is selected, even if negative value
     bool found=false;
-    for(long i=0;i<cc_values.size();i++)
-    {
+    for(long i=0;i<cc_values.size();i++){
         long comm=cc_values[i].first;
 
         double first_fact=Emaxd_inv;
@@ -248,8 +241,7 @@ void compute_permanence_overlap(long NV, long  *vtxPtr,  edge * vtxInd, PI_Netwo
 
         //number of external neighbors
         long second_fact=0.0;
-        if(v.size()>0)
-        {
+        if(v.size()>0){
             second_fact=(1.0-cc_values[i].second)/(double)(v.size());
 
 
@@ -280,8 +272,7 @@ void compute_permanence_overlap(long NV, long  *vtxPtr,  edge * vtxInd, PI_Netwo
     } //end of for
 
     //If Perm<0 and not singleton put in new community
-    if(!found)
-    {
+    if(!found){
 
 #pragma omp atomic write
         *max_comm=*max_comm+1;
