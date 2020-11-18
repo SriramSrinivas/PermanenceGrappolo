@@ -121,7 +121,7 @@ int main(int argc, char** argv) {
 
     }//End of if( VF == 1 )
 
-//    runPermanence(G,&opts,&threadsOpt, nT, argv, argc);
+
     runOverlappingPermanence(G, &opts, &threadsOpt, nT, argv, argc);
 
 

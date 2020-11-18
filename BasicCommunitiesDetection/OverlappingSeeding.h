@@ -18,20 +18,21 @@ void NeighborMin_seed(long NV, long  *vtxPtr,  edge * vtxInd, PI_Network *PI)
     for(int i=0; i<NV;i++)
     {
         PI->at(i).ListPI.push_back(dummy1);
+        PI->at(i).ListPI[0].first=1;
     }
 
     //Initialize Communities
     int id=0;
 #pragma omp parallel for schedule(static)
-    for(int i=0;i<NV;i++)
+    for(long i=0;i<NV;i++)
     {
-        if(PI->at(i).ListPI[0].first<i){PI->at(i).ListPI[0].first=i;}
+        if(PI->at(i).ListPI[0].first>i){PI->at(i).ListPI[0].first=i;}
         long adj1 = vtxPtr[i];	    //Begin
         long adj2 = vtxPtr[i+1];	//End
-        for(int j=adj1; j<adj2; j++)
+        for(long j=adj1; j<adj2; j++)
         {
-            int n=vtxInd[j].tail;
-            if(PI->at(n).ListPI[0].first<i){PI->at(n).ListPI[0].first=i;}
+            long n=vtxInd[j].tail;
+            if(PI->at(n).ListPI[0].first>i){PI->at(n).ListPI[0].first=i;}
         }//end of for
     }//end of for
     return;

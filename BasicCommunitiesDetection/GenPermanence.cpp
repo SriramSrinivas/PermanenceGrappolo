@@ -10,6 +10,7 @@
 
 using namespace std;
 
+
 void runOverlappingPermanence(graph *G, clustering_parameters *opts, int *threadsOpt , int numThreads, char **argv, int argc)
 {
     cout << "Inside Overlapping Permanence Code" << "\n";
@@ -22,16 +23,15 @@ void runOverlappingPermanence(graph *G, clustering_parameters *opts, int *thread
     P_Info dummyPI;
     PI_Network PI;
     PI.resize(NV, dummyPI);
-
     NeighborMin_seed(NV,vtxPtr,vtxInd, &PI);
 
 //    for(int i=0;i<NV;i++)
 //    {printf("%d::%d \n",i, PI[i].ListPI[0].first);}
 
 
-    int max_comm=-1;
+    long max_comm=-1;
 #pragma omp parallel for schedule(static)
-    for(int i=NV-1;i>=0;i--)
+    for(long i=NV-1;i>=0;i--)
     {
         if(max_comm<PI[i].ListPI[0].first)
 
