@@ -104,9 +104,9 @@ struct Perm_Info
 
 struct int2_dbl
 {
-    int first;
-    double second;
-    int third;
+    long first;
+    long second;
+    long third;
 
     //Constructor
     int2_dbl( )
