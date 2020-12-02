@@ -10,7 +10,6 @@
 
 using namespace std;
 
-
 void runOverlappingPermanence(graph *G, clustering_parameters *opts, int *threadsOpt , int numThreads, char **argv, int argc)
 {
     cout << "Inside Overlapping Permanence Code" << "\n";
@@ -29,22 +28,9 @@ void runOverlappingPermanence(graph *G, clustering_parameters *opts, int *thread
 //    {printf("%d::%d \n",i, PI[i].ListPI[0].first);}
 
 
-    long max_comm=-1;
-#pragma omp parallel for schedule(static)
-    for(long i=NV-1;i>=0;i--)
-    {
-        if(max_comm<PI[i].ListPI[0].first)
-
-        { cout << "Thread"<<omp_get_num_threads()<<"\n";
-#pragma omp atomic write
-
-            max_comm=PI[i].ListPI[0].first;
+    long perm=0.0;
 
 
-        }
-    }
-
-
-    optimize_permanence(NV,vtxPtr,vtxInd, &PI, &max_comm);
+    optimize_permanence(NV,vtxPtr,vtxInd, &PI, &perm);
 
 }
