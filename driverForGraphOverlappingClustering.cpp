@@ -120,9 +120,44 @@ int main(int argc, char** argv) {
         displayGraphCharacteristics(G);
 
     }//End of if( VF == 1 )
+    long NV = G->numVertices;
+    P_Info dummyPI;
+    PI_Network PI;
+    PI.resize(NV, dummyPI);
+    double timestart,timeend=0.0;
+    timestart=omp_get_wtime();
+    PI=runOverlappingPermanence(G, &opts, &threadsOpt, nT, argv, argc, PI);
+    timeend=omp_get_wtime();
+
+    printf("********************************************\n");
+    printf("*********    Compact Summary   *************\n");
+    printf("********************************************\n");
+//    printf("Number of threads              : %ld\n", omp_get);
+//    printf("Total number of phases         : %ld\n", phase);
+//    printf("Total number of iterations     : %ld\n", totItr);
+//    printf("Final number of clusters       : %ld\n", numClusters);
+//    printf("Final modularity               : %lf\n", prevMod);
+//    printf("Total time for clustering      : %lf\n", totTimeClustering);
+//    printf("Total time for building phases : %lf\n", totTimeBuildingPhase);
+    printf("********************************************\n");
+    printf("TOTAL TIME                     : %lf\n", (timeend-timestart) );
+    printf("********************************************\n");
 
 
-    runOverlappingPermanence(G, &opts, &threadsOpt, nT, argv, argc);
+    if( opts.output ) {
+        char outFile[256];
+        sprintf(outFile,"%s_clustInfo", opts.inFile);
+        printf("Cluster information will be stored in file: %s\n", outFile);
+        FILE* out = fopen(outFile,"w");
+
+        for(long i=0;i<NV;i++) {
+            fprintf(out,"Node %d: ", i);
+            for(long j=0;j<PI.at(i).ListPI.size();j++)
+            {fprintf(out,"%d ",PI.at(i).ListPI[j].first);}
+            fprintf(out,"\n");
+        }
+        fclose(out);
+    }
 
 
     return 0;

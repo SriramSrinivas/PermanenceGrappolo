@@ -20,24 +20,28 @@ void compute_CC_Numerator(long NV, long  *vtxPtr,  edge * vtxInd, vector<long> *
 {
     *numerator=0;
     int last_neigh=neighbors->at(neighbors->size()-1);
-
     for(long i=0; i<neighbors->size()-1; i++){
         long n=neighbors->at(i);
 
+
         long adj1 = vtxPtr[n];	    //Begin
         long adj2 = vtxPtr[n+1];	//End
+
         //get hop 2 neighbors
         //only count for neighbors higher than n--since lower number ids would already have been counted
         for(long j=adj1;j<adj2;j++){
             long m=vtxInd[j].tail;
-            cout <<"m"<<m<<"n"<<n<<"\n";
+            if(m<vtxInd[j].tail){continue;}
             if(m>last_neigh) {break;}
-
-            //Check remaining neighbirs to see if they are equal to m
-            for(long k=i+1;k<neighbors->size(); k++){
-                long p=neighbors->at(k);
-                if(m==p){*numerator=*numerator+2; break;}
-            }//end of for
+                 for (long k = i + 1; k < neighbors->size(); k++) {
+                     long p = neighbors->at(k);
+//                     cout << "m11--" << m << "p111--" << p << " n---" << n << "\n";
+                     if (m == p) {
+                         *numerator = *numerator + 2;
+                         break;
+                     }
+                 }//end of for
+//             }
         }//end of for
     }//end of for
     return;
@@ -49,11 +53,12 @@ void compute_CC_Numerator(long NV, long  *vtxPtr,  edge * vtxInd, vector<long> *
 //next=communities in next t+1
 
 
-void compute_permanence_overlap(long NV, long  *vtxPtr,  edge * vtxInd, PI_Network *PI_prev, PI_Network *PI_cur, long  node, long  *perm)
+double compute_permanence_overlap(long NV, long  *vtxPtr,  edge * vtxInd, PI_Network *PI_prev, PI_Network *PI_cur, long  *node)
 {
     //Map of communities
     //First is the community id
     //Second is the index
+    double perm=0.0;
     std::map<long,long> communityInfo;
     std::pair<std::map<long,long>::iterator,bool> retE;
     std::map<long,long>::iterator itE;
@@ -62,8 +67,8 @@ void compute_permanence_overlap(long NV, long  *vtxPtr,  edge * vtxInd, PI_Netwo
     vector<long> C_ID; //stores ids of communities;
     vector<bool> C_self; //marking communities that are shared with nodes
     P_Info PI_next;
-    long adj1 = vtxPtr[node];	    //Begin
-    long adj2 = vtxPtr[node+1];	//End
+    long adj1 = vtxPtr[*node];	    //Begin
+    long adj2 = vtxPtr[*node+1];	//End
 
     //For each neighbor
     for(long i=adj1;i<adj2;i++)
@@ -119,8 +124,6 @@ void compute_permanence_overlap(long NV, long  *vtxPtr,  edge * vtxInd, PI_Netwo
     }
 
 
-
-
     //P^c(v)= I^c(v)/(Emax(v)*D(v)-(1-Cin^c(v)*I^c(v)/I(v)
     //P^c(v)=I^c(v)[1/(Emax(v)*D(v)-(1-Cin^c(v))/I(v)]
     //When computing overlapping permanence we keep all communities that produce +ve P^c(v)
@@ -158,25 +161,16 @@ void compute_permanence_overlap(long NV, long  *vtxPtr,  edge * vtxInd, PI_Netwo
         if(C_Info[i].size()>1)
         {
             compute_CC_Numerator( NV, vtxPtr, vtxInd,&C_Info[i],&numerator);
-cout<<"i"<<i<<"num"<<numerator<<"\n";
+
             cc_values[i].second=(double)numerator/(double)((C_Info[i].size())*(C_Info[i].size()-1));
             cc_values[i].first=i;
         }
-//        else
-//        {cc_values[i].second=0.0;}
+
 
         numeratorS[i]=numerator;
     }
     std::sort(cc_values.begin(),cc_values.end(),sortbysec); //sort lowest to highest
-//        cout <<"checkCC"<<"\n";
-//        for(int k=0;k<cc_values.size();k++)
-//        {
-//            cout<<node <<"::" <<cc_values.at(k).first<<"--- "<<cc_values.at(k).second<<"\n";
-//        }
 
-
-    //cout<<"::::DDD::: \n";
-    // print_vector(cc_values);
 
     //To find the communities that give positive permanence start from highest and add while positive
     //This will work because cc_values are the main driver--but the method is still approximate
@@ -184,17 +178,7 @@ cout<<"i"<<i<<"num"<<numerator<<"\n";
     double Sum_Perm=0.0;
     vector<long> seen_neighbors;
     seen_neighbors.clear();
-    /*
-     vector<long> communities;
-     communities.clear();
 
-     vector<double> permS;
-     permS.clear();*/
-
-    //Initially set threshold to >=0 for first step. Then set threshold to >0
-
-
-    //Such that each node has at least one community--community with highest permanence is selected, even if negative value
     bool found=false;
     for(long i=0;i<cc_values.size();i++){
         long comm=cc_values[i].first;
@@ -225,16 +209,10 @@ cout<<"i"<<i<<"num"<<numerator<<"\n";
 
         //Compute Perm
         Perm =first_fact-second_fact;
-        cout<<"node::"<<node <<"First:::"<<first_fact<<" second::::"<<second_fact<<"\n";
-
-
-
         if(Perm <= 0.0) {break;}
         found=true;
-
         //get total permanence
         Sum_Perm=Sum_Perm+Perm;
-        //cout <<"i"<<node<<"::"<<Perm;
 
         int2_dbl Perm_info;
 
@@ -245,35 +223,10 @@ cout<<"i"<<i<<"num"<<numerator<<"\n";
         PI_next.ListPI.push_back(Perm_info);
     } //end of for
 
-
-    *perm=Sum_Perm;
-
+    perm=Sum_Perm;
 
 
-    //Check if C_ID contains all the communities of the node
-    //If not add remaining communities, with itself as neighbor
-    //This is to check with own community
-    //    bool singleton=false;
-    //    if(singleton)
-    //    {
-    //        vector<int> remaining_comms;
-    //        remaining_comms.clear();
-    //
-    //        vector<int> C_IDx=C_ID;
-    //        sort(C_IDx.begin(),C_IDx.end());
-    //        remaining_comms=difference(node_Comm,C_IDx);
-    //        // print_vector(remaining_comms);
-    //        pos=C_ID.size();
-    //        for(int i=0;i<remaining_comms.size();i++)
-    //        {
-    //            C_ID.push_back(remaining_comms[i]);
-    //            C_Info.push_back(dummyV);
-    //            C_Info[pos].push_back(node);
-    //            pos++;
-    //        }
-    //    }
-
-    return;
+    return perm;
 }
 
 void optimize_permanence(long NV, long  *vtxPtr,  edge * vtxInd, PI_Network *PI, long *perm)
@@ -282,13 +235,13 @@ void optimize_permanence(long NV, long  *vtxPtr,  edge * vtxInd, PI_Network *PI,
     PI_Network PI_prev;
     PI_prev.resize(NV, dummyPI);
     //Iterate until precision is reached
-    double sumQ=0.0; //total permannece of network
+    double sumQ=0.0; //total permanence of network
     double oldQ=-1;
     long max_iter=100;
     long iter=0;
 
     while( (iter < max_iter) && (oldQ!=sumQ) ) {
-        cout << "ITER ======  "<< iter <<"\n";
+       // cout << "ITER ======  "<< iter <<"\n";
         //Update permanence
         oldQ=sumQ;
         sumQ=0.0;
@@ -302,23 +255,17 @@ void optimize_permanence(long NV, long  *vtxPtr,  edge * vtxInd, PI_Network *PI,
 #pragma omp for schedule(dynamic)
             for(long i=0;i<NV; i++) {
 
-                long myperm=0.0;
-                compute_permanence_overlap(NV,vtxPtr,vtxInd, &PI_prev, PI, i, &myperm);
+                double myperm=compute_permanence_overlap(NV,vtxPtr,vtxInd, &PI_prev, PI, &i);
+                //cout<<"perm::"<<i<<"::"<<myperm<<"\n";
                 sumQ=sumQ+myperm;
 
             } //end of checking all nodes
 
         }
-        cout << "At Iteration " << iter << " the total permanence is " << sumQ << "\n";
+        //cout << "At Iteration " << iter << " the total permanence is " << sumQ << "\n";
         iter++;
     }//end of while(iter)
     //Prlong out communities for each node
-    for(long i=0;i<NV;i++) {
-        printf("Node %d: ", i);
-        for(long j=0;j<PI->at(i).ListPI.size();j++)
-        {printf("%d ",PI->at(i).ListPI[j].first);}
-        printf("\n");
-    }
     return;
 } //End of optimize_permanence()
 
