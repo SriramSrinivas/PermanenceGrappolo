@@ -229,7 +229,7 @@ double compute_permanence_overlap(long NV, long  *vtxPtr,  edge * vtxInd, PI_Net
     return perm;
 }
 
-void optimize_permanence(long NV, long  *vtxPtr,  edge * vtxInd, PI_Network *PI, long *perm)
+void optimize_permanence(long NV, long  *vtxPtr,  edge * vtxInd, PI_Network *PI, long *perm, vector<double> *timingPerIteration)
 {
     P_Info dummyPI;
     PI_Network PI_prev;
@@ -245,6 +245,8 @@ void optimize_permanence(long NV, long  *vtxPtr,  edge * vtxInd, PI_Network *PI,
         //Update permanence
         oldQ=sumQ;
         sumQ=0.0;
+        double timestart,timeend=0.0;
+        timestart=omp_get_wtime();
 #pragma omp parallel
         {
 #pragma omp for schedule(dynamic)
@@ -262,6 +264,10 @@ void optimize_permanence(long NV, long  *vtxPtr,  edge * vtxInd, PI_Network *PI,
             } //end of checking all nodes
 
         }
+        timeend=omp_get_wtime();
+        timingPerIteration->push_back(timeend-timestart);
+        cout <<timeend-timestart<<"\n";
+
         //cout << "At Iteration " << iter << " the total permanence is " << sumQ << "\n";
         iter++;
     }//end of while(iter)

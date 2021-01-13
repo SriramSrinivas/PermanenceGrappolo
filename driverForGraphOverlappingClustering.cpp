@@ -124,9 +124,10 @@ int main(int argc, char** argv) {
     P_Info dummyPI;
     PI_Network PI;
     PI.resize(NV, dummyPI);
+    vector<double> timingPerIteration;
     double timestart,timeend=0.0;
     timestart=omp_get_wtime();
-    PI=runOverlappingPermanence(G, &opts, &threadsOpt, nT, argv, argc, PI);
+    PI=runOverlappingPermanence(G, &opts, &threadsOpt, nT, argv, argc, PI, &timingPerIteration);
     timeend=omp_get_wtime();
 
     printf("********************************************\n");
@@ -134,7 +135,7 @@ int main(int argc, char** argv) {
     printf("********************************************\n");
 //    printf("Number of threads              : %ld\n", omp_get);
 //    printf("Total number of phases         : %ld\n", phase);
-//    printf("Total number of iterations     : %ld\n", totItr);
+
 //    printf("Final number of clusters       : %ld\n", numClusters);
 //    printf("Final modularity               : %lf\n", prevMod);
 //    printf("Total time for clustering      : %lf\n", totTimeClustering);
@@ -142,6 +143,29 @@ int main(int argc, char** argv) {
     printf("********************************************\n");
     printf("TOTAL TIME                     : %lf\n", (timeend-timestart) );
     printf("********************************************\n");
+
+    printf("********************************************\n");
+    cout<<"Total Number of Iterations:  "<< timingPerIteration.size()<<"\n";
+    printf("********************************************\n");
+
+    printf("********************************************\n");
+    double timeSpentComputingPermanence=0.00;
+    double average=0.00;
+    for(int i=0;i<timingPerIteration.size();i++)
+    {
+        cout<<"iteration: "<<i<<"---"<< timingPerIteration.at(i)<<"\n";
+        timeSpentComputingPermanence+=timingPerIteration.at(i);
+    }
+    average=(float)(timeSpentComputingPermanence/timingPerIteration.size());
+    cout<<"Average Iteration Time :   "<<average<<"\n";
+    printf("********************************************\n");
+
+
+    printf("********************************************\n");
+    printf("Time for Optimizing Permanence: %lf\n",timeSpentComputingPermanence );
+
+    printf("********************************************\n");
+
 
 
     if( opts.output ) {

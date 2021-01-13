@@ -10,7 +10,7 @@
 
 using namespace std;
 
-PI_Network runOverlappingPermanence(graph *G, clustering_parameters *opts, int *threadsOpt , int numThreads, char **argv, int argc, PI_Network PI)
+PI_Network runOverlappingPermanence(graph *G, clustering_parameters *opts, int *threadsOpt , int numThreads, char **argv, int argc, PI_Network PI, vector<double>  *timingPerIteration)
 {
     cout << "Inside Overlapping Permanence Code" << "\n";
     long    NV        = G->numVertices;
@@ -28,7 +28,7 @@ PI_Network runOverlappingPermanence(graph *G, clustering_parameters *opts, int *
     long perm=0.0;
 
 
-    optimize_permanence(NV,vtxPtr,vtxInd, &PI, &perm);
+    optimize_permanence(NV,vtxPtr,vtxInd, &PI, &perm, timingPerIteration);
 
     return PI;
 
