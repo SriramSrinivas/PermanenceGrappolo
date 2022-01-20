@@ -23,7 +23,6 @@ void compute_CC_Numerator(long NV, long  *vtxPtr,  edge * vtxInd, vector<long> *
     for(long i=0; i<neighbors->size()-1; i++){
         long n=neighbors->at(i);
 
-
         long adj1 = vtxPtr[n];	    //Begin
         long adj2 = vtxPtr[n+1];	//End
 
