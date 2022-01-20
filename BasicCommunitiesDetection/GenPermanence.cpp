@@ -20,6 +20,7 @@ PI_Network runOverlappingPermanence(graph *G, clustering_parameters *opts, int *
     edge    *vtxInd   = G->edgeList;
 
     NeighborMin_seed(NV,vtxPtr,vtxInd, &PI);
+    cout <<"seeding done"<<"\n";
 
 //    for(int i=0;i<NV;i++)
 //    {printf("%d::%d \n",i, PI[i].ListPI[0].first);}

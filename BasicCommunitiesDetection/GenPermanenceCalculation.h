@@ -74,7 +74,7 @@ double compute_permanence_overlap(long NV, long  *vtxPtr,  edge * vtxInd, PI_Net
     for(long i=adj1;i<adj2;i++)
     {
         int neigh=vtxInd[i].tail;
-
+//          cout <<neigh<<"neigh"<<"\n";
         //find the communities to which it belongs
         for(int j=0;j<PI_cur->at(neigh).ListPI.size();j++)
         {
@@ -151,7 +151,7 @@ double compute_permanence_overlap(long NV, long  *vtxPtr,  edge * vtxInd, PI_Net
     vector<long> numeratorS;
     numeratorS.resize(C_Info.size(),0);
 
-    // cout<<"::::LKLKL::: \n";
+
 
     //For each community computing Perm
     for(long i=0;i<C_Info.size();i++)
@@ -195,8 +195,11 @@ double compute_permanence_overlap(long NV, long  *vtxPtr,  edge * vtxInd, PI_Net
         vector<long> v;
         v.clear();
         v.resize(t,0);
+
         std::vector<long>::iterator it;
         it=std::set_union (seen_neighbors.begin(), seen_neighbors.end(), C_Info[comm].begin(), C_Info[comm].end(), v.begin());
+//        cout <<"it111";
+//        cout <<v.size()<<"it";
         v.resize(it-v.begin());
 
 
@@ -241,7 +244,7 @@ void optimize_permanence(long NV, long  *vtxPtr,  edge * vtxInd, PI_Network *PI,
     long iter=0;
 
     while( (iter < max_iter) && (oldQ!=sumQ) ) {
-       // cout << "ITER ======  "<< iter <<"\n";
+        cout << "ITER ======  "<< iter <<"\n";
         //Update permanence
         oldQ=sumQ;
         sumQ=0.0;
@@ -253,12 +256,13 @@ void optimize_permanence(long NV, long  *vtxPtr,  edge * vtxInd, PI_Network *PI,
             for(long i=0;i<NV; i++) {
                 PI_prev[i]=PI->at(i);
             }
+
             //Adjust position of all nodes by moving/merging them
 #pragma omp for schedule(dynamic)
             for(long i=0;i<NV; i++) {
 
                 double myperm=compute_permanence_overlap(NV,vtxPtr,vtxInd, &PI_prev, PI, &i);
-                //cout<<"perm::"<<i<<"::"<<myperm<<"\n";
+//                cout<<"perm::"<<i<<"::"<<myperm<<"\n";
                 sumQ=sumQ+myperm;
 
             } //end of checking all nodes
